@@ -16,22 +16,28 @@ class jogo:
         self.janela.iconbitmap("icons/violao.ico")
         self.janela['bg'] = 'white'
 
-        self.titulo = Label(self.janela, text='Campo Harmonico de C', font=('arial',15,'bold'), bg='white', fg='orange')
-        self.titulo.place(x=140,y=30)
+        logoImg1 = PhotoImage(file="img/viola3.png")
+        self.logoimage1 = Label(self.janela, image=logoImg1, bg='white')
+        self.logoimage1.place(x=10, y=60)        
+        
+        self.titulo = Label(self.janela, text='Campo Harmonico', font=('arial',15,'bold'), bg='white', fg='orange')
+        self.titulo.place(x=170,y=30)
 
         self.botao = Button(self.janela, text='Iniciar', bg='orange', fg='white', relief='groove', font=('arial', 14, 'bold'), width=10, command = lambda: self.harmonia_01('C'))
         self.botao.place(x=200,y=230)
 
-        logoImg = PhotoImage(file="img/guitarMan2.png")
-        self.logoimage = Label(self.janela, image=logoImg, bg='white')
-        self.logoimage.place(x=240, y=270)
+        logoImg2 = PhotoImage(file="img/guitarMan2.png")
+        self.logoimage2 = Label(self.janela, image=logoImg2, bg='white')
+        self.logoimage2.place(x=240, y=270)
+        
         self.janela.mainloop()
     
     def harmonia_01(self, grau):
 
         self.titulo.destroy()
         self.botao.destroy()
-        self.logoimage.destroy()
+        self.logoimage1.destroy()
+        self.logoimage2.destroy()
         
         if grau == 'C':
             
@@ -58,21 +64,10 @@ class jogo:
             lb2.place(x=230,y=130)
             lb3.place(x=280,y=130)
 
-        
         txt1 = Label(self.janela, text='Informe na Ordem a Sequência das Notas:', font=('arial',13,'bold'), bg='white', fg='orange')
         txt1.place(x=30,y=200)
 
-        for c in range(1, 8):
-            self.listaBotao.append(c)
-        for c in self.listaBotao:
-            self.bt = Button(self.janela, text= str(c)+'º', command = lambda: self.harmonia(c), bg='orange', fg='white', width='5', border=1)
-            if c == 1:
-                self.bt.place(x=self.add,y=105)
-            else:
-                self.add += 50
-                self.bt.place(x = self.add, y = 105)
-        print()
-        '''self.bt1 = Button(self.janela, text='1º', command = lambda: self.harmonia(1), bg='orange', fg='white', width='5', border=1)
+        self.bt1 = Button(self.janela, text='1º', command = lambda: self.harmonia(1), bg='orange', fg='white', width='5', border=1)
         self.bt1.place(x=80,y=245)
         self.bt2 = Button(self.janela, text='2º', command = lambda: self.harmonia(2), bg='orange', fg='white', width='5', border=1)
         self.bt2.place(x=130,y=245)
@@ -85,7 +80,7 @@ class jogo:
         self.bt6 = Button(self.janela, text='6º', command = lambda: self.harmonia(6), bg='orange', fg='white', width='5', border=1)
         self.bt6.place(x=330,y=245)
         self.bt7 = Button(self.janela, text='7º', command = lambda: self.harmonia(7), bg='orange', fg='white', width='5', border=1)
-        self.bt7.place(x=380,y=245)'''
+        self.bt7.place(x=380,y=245)
 
         logoImg2 = PhotoImage(file="img/guitarMan1.png")
         self.logoimage2 = Label(self.janela, image=logoImg2, bg='white')
@@ -96,6 +91,7 @@ class jogo:
     def harmonia(self, grau):
                 
         if grau == 1:
+            
             if  self.dd[0] == False and self.lista[0] == self.listaEmba[0]:
                 self.bt1['bg'] = 'green'
                 self.dd[0] = True

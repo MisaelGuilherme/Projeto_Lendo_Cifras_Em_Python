@@ -71,7 +71,7 @@ class jogo:
             else:
                 self.add += 50
                 self.bt.place(x = self.add, y = 105)
-        ioo
+        print()
         '''self.bt1 = Button(self.janela, text='1º', command = lambda: self.harmonia(1), bg='orange', fg='white', width='5', border=1)
         self.bt1.place(x=80,y=245)
         self.bt2 = Button(self.janela, text='2º', command = lambda: self.harmonia(2), bg='orange', fg='white', width='5', border=1)

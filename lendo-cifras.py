@@ -2,10 +2,10 @@ from tkinter import *
 from random import *
 import pygame
 
-'''pygame.init()
+pygame.init()
 pygame.mixer.music.load('song/music1.mp3')
 pygame.mixer.music.play()
-pygame.event.wait()'''
+pygame.event.wait()
 
 class jogo:
     def __init__(self):
@@ -24,16 +24,16 @@ class jogo:
 
         logoImg1 = PhotoImage(file="img/viola3.png")
         self.logoimage1 = Label(self.janela, image=logoImg1, bg='white')
-        self.logoimage1.place(x=10, y=60)        
+        self.logoimage1.place(x=10, y=70)        
         
-        self.titulo1 = Label(self.janela, text='Campo Harmonico', font=('arial',15,'bold'), bg='white', fg='orange')
-        self.titulo1.place(x=170,y=30)
+        self.titulo1 = Label(self.janela, text='Campo Harmonico', font=('arial',20,'bold'), bg='white', fg='orange')
+        self.titulo1.place(x=140,y=30)
         
-        self.titulo2 = Label(self.janela, text='De', font=('arial',15,'bold'), bg='white', fg='orange')
-        self.titulo2.place(x=240,y=80)
+        self.titulo2 = Label(self.janela, text='De', font=('arial',18,'bold'), bg='white', fg='orange')
+        self.titulo2.place(x=240,y=90)
         
         self.titulo3 = Label(self.janela, text='C', font=('arial',25,'bold'), bg='white', fg='orange')
-        self.titulo3.place(x=240,y=120)
+        self.titulo3.place(x=240,y=140)
 
         self.botao = Button(self.janela, text='Iniciar', bg='orange', fg='white', relief='groove', font=('arial', 14, 'bold'), width=10, command = lambda: self.harmonia_01('C'))
         self.botao.place(x=200,y=230)

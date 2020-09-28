@@ -1,0 +1,6 @@
+O que deve conter no software
+
+1- Exercícios de transporsição
+
+2- Exercícios dos graus das Notas
+

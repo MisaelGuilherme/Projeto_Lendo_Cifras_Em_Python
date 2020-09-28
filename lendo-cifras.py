@@ -68,7 +68,10 @@ class jogo:
         
         iconVio = PhotoImage(file='img/viola00.png')
         self.viola = Label(self.janela, image=iconVio, bg='white', border=0)
-        self.viola.place(x=-120, y=10)
+        self.viola.place(x=-130, y=40)
+        
+        txt1 = Label(self.janela, text='Informe na Ordem o Grau das Notas', font=('arial',15,'bold'), bg='white', fg='orange')
+        txt1.place(x=80,y=20)        
         
         if grau == 'C':
             
@@ -91,12 +94,10 @@ class jogo:
             lb1 = Label(self.janela, text=v1, font=('arial',18,'bold'), bg='white', width=3)
             lb2 = Label(self.janela, text=v2, font=('arial',18,'bold'), bg='white', width=3)
             lb3 = Label(self.janela, text=v3, font=('arial',18,'bold'), bg='white', width=3)
-            lb1.place(x=180,y=130)
-            lb2.place(x=230,y=130)
-            lb3.place(x=280,y=130)
+            lb1.place(x=180,y=160)
+            lb2.place(x=230,y=160)
+            lb3.place(x=280,y=160)
 
-        txt1 = Label(self.janela, text='Informe na Ordem a Sequência das Notas:', font=('arial',13,'bold'), bg='white', fg='orange')
-        txt1.place(x=30,y=200)
 
         self.bt1 = Button(self.janela, text='1º', command = lambda: self.harmonia(1), bg='orange', fg='white', width='5', border=1)
         self.bt1.place(x=80,y=245)
@@ -113,9 +114,9 @@ class jogo:
         self.bt7 = Button(self.janela, text='7º', command = lambda: self.harmonia(7), bg='orange', fg='white', width='5', border=1)
         self.bt7.place(x=380,y=245)
 
-        logoImg2 = PhotoImage(file="img/guitarMan1.png")
-        self.logoimage2 = Label(self.janela, image=logoImg2, bg='white')
-        self.logoimage2.place(x=260, y=270)
+        logoImg1 = PhotoImage(file="img/guitarMan1.png")
+        self.logoimage2 = Label(self.janela, image=logoImg1, bg='white')
+        self.logoimage2.place(x=280, y=300)
 
         self.janela.mainloop()
         
@@ -143,7 +144,7 @@ class jogo:
                 self.logoimage2.destroy()
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
                 logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                logoimage3.place(x=260, y=270)
+                logoimage3.place(x=300, y=300)
 
                 self.janela.mainloop()                
 
@@ -168,7 +169,7 @@ class jogo:
                 self.logoimage2.destroy()
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
                 logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                logoimage3.place(x=260, y=270)
+                logoimage3.place(x=300, y=300)
 
                 self.janela.mainloop()
 
@@ -193,7 +194,7 @@ class jogo:
                 self.logoimage2.destroy()
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
                 logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                logoimage3.place(x=260, y=270)
+                logoimage3.place(x=300, y=300)
 
                 self.janela.mainloop()
                 
@@ -218,7 +219,7 @@ class jogo:
                 self.logoimage2.destroy()
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
                 logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                logoimage3.place(x=260, y=270)
+                logoimage3.place(x=300, y=300)
 
                 self.janela.mainloop()
                 
@@ -243,7 +244,7 @@ class jogo:
                 self.logoimage2.destroy()
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
                 logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                logoimage3.place(x=260, y=270)
+                logoimage3.place(x=300, y=300)
 
                 self.janela.mainloop()
         if grau == 6:
@@ -267,7 +268,7 @@ class jogo:
                 self.logoimage2.destroy()
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
                 logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                logoimage3.place(x=260, y=270)
+                logoimage3.place(x=300, y=300)
 
                 self.janela.mainloop()
 
@@ -292,7 +293,7 @@ class jogo:
                 self.logoimage2.destroy()
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
                 logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                logoimage3.place(x=260, y=270)
+                logoimage3.place(x=300, y=300)
 
                 self.janela.mainloop()
 

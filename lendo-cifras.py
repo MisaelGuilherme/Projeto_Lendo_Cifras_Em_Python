@@ -2,14 +2,14 @@ from tkinter import *
 from random import *
 import pygame
 
-pygame.init()
+'''pygame.init()
 pygame.mixer.music.load('song/music1.mp3')
 pygame.mixer.music.play()
-pygame.event.wait()
+pygame.event.wait()'''
 
 class jogo:
     def __init__(self):
-        self.add = 80
+        
         self.listaBotao = []
         self.contador = 0
         self.janela = Tk()
@@ -35,8 +35,8 @@ class jogo:
         self.titulo3 = Label(self.janela, text='C', font=('arial',25,'bold'), bg='white', fg='orange')
         self.titulo3.place(x=240,y=140)
 
-        self.botao = Button(self.janela, text='Iniciar', bg='orange', fg='white', relief='groove', font=('arial', 14, 'bold'), width=10, command = lambda: self.harmonia_01('C'))
-        self.botao.place(x=200,y=230)
+        self.botao = Button(self.janela, text='Iniciar', bg='orange', fg='white', relief='groove', font=('arial', 14, 'bold'), width=7, command = lambda: self.harmonia_01('C'))
+        self.botao.place(x=212,y=230)
 
         logoImg2 = PhotoImage(file="img/guitarMan2.png")
         self.logoimage2 = Label(self.janela, image=logoImg2, bg='white')
@@ -46,7 +46,19 @@ class jogo:
         self.audio = Button(self.janela, image=iconAud, bg='white', border=0, command = lambda: self.som())
         self.audio.place(x=450, y=10)
         
+        self.efeito_botao_crescer()
+        
         self.janela.mainloop()
+    def efeito_botao_crescer(self):
+        self.contador += 1
+
+        if self.contador % 2 == 0:
+            self.botao['fg'] = 'white'
+
+        else:
+            self.botao['fg'] = 'orange'
+        
+        self.botao.after(500, self.efeito_botao_crescer)
         
     def som(self):
         

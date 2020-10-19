@@ -135,6 +135,18 @@ class jogo:
 
     def reiniciar(self):
         
+        def restart():
+            self.contador = 0
+            self.bt1['bg'] = 'orange'
+            self.bt2['bg'] = 'orange'
+            self.bt3['bg'] = 'orange'
+            self.bt4['bg'] = 'orange'
+            self.bt5['bg'] = 'orange'
+            self.bt6['bg'] = 'orange'
+            self.bt7['bg'] = 'orange'
+            
+            self.reiniciar.destroy()
+        
         def brilhar():
             
             self.contBrilho += 1
@@ -145,7 +157,7 @@ class jogo:
                 self.reiniciar['fg'] = 'white'
             self.reiniciar.after(300, brilhar)
 
-        self.reiniciar = Button(self.janela, text='Vamos de Novo?', bg='white', activebackground='white', fg='orange', activeforeground='orange', border=0, font=('arial', 18, 'bold'))
+        self.reiniciar = Button(self.janela, text='Vamos de Novo?', bg='white', activebackground='white', fg='orange', activeforeground='orange', border=0, font=('arial', 18, 'bold'), command=restart)
         self.reiniciar.place(x=50, y=350)
         
         brilhar()

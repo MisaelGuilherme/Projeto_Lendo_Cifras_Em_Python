@@ -2,10 +2,10 @@ from tkinter import *
 from random import *
 import pygame
 
-'''pygame.init()
+pygame.init()
 pygame.mixer.music.load('song/music1.mp3')
 pygame.mixer.music.play()
-pygame.event.wait()'''
+pygame.event.wait()
 
 class jogo:
     def __init__(self):
@@ -146,6 +146,8 @@ class jogo:
             self.bt7['bg'] = 'orange'
             
             self.reiniciar.destroy()
+            
+            self.logoimage3.destroy()
         
         def brilhar():
             
@@ -185,8 +187,8 @@ class jogo:
 
                 self.logoimage2.destroy()
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
-                logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                logoimage3.place(x=300, y=300)
+                self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
+                self.logoimage3.place(x=300, y=300)
 
                 self.reiniciar()
 
@@ -212,8 +214,8 @@ class jogo:
                 
                 self.logoimage2.destroy()
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
-                logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                logoimage3.place(x=300, y=300)
+                self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
+                self.logoimage3.place(x=300, y=300)
 
                 self.reiniciar()
                 
@@ -239,8 +241,8 @@ class jogo:
 
                 self.logoimage2.destroy()
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
-                logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                logoimage3.place(x=300, y=300)
+                self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
+                self.logoimage3.place(x=300, y=300)
                 
                 self.reiniciar()
 
@@ -266,8 +268,8 @@ class jogo:
 
                 self.logoimage2.destroy()
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
-                logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                logoimage3.place(x=300, y=300)
+                self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
+                self.logoimage3.place(x=300, y=300)
                 
                 self.reiniciar()
 
@@ -293,8 +295,8 @@ class jogo:
 
                 self.logoimage2.destroy()
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
-                logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                logoimage3.place(x=300, y=300)
+                self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
+                self.logoimage3.place(x=300, y=300)
                 
                 self.reiniciar()
 
@@ -319,8 +321,8 @@ class jogo:
 
                 self.logoimage2.destroy()
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
-                logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                logoimage3.place(x=300, y=300)
+                self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
+                self.logoimage3.place(x=300, y=300)
                 
                 self.reiniciar()
 
@@ -346,8 +348,8 @@ class jogo:
 
                 self.logoimage2.destroy()
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
-                logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                logoimage3.place(x=300, y=300)
+                self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
+                self.logoimage3.place(x=300, y=300)
                 
                 self.reiniciar()
 

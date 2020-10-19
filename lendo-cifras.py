@@ -11,6 +11,7 @@ class jogo:
     def __init__(self):
         
         self.listaBotao = []
+        self.contBrilho = 0
         self.contador = 0
         self.janela = Tk()
         self.janela.geometry('500x500+350+100')
@@ -35,7 +36,7 @@ class jogo:
         self.titulo3 = Label(self.janela, text='C', font=('arial',25,'bold'), bg='white', fg='orange')
         self.titulo3.place(x=240,y=140)
 
-        self.botao = Button(self.janela, text='Iniciar', bg='orange', fg='white', relief='groove', font=('arial', 14, 'bold'), width=7, command = lambda: self.harmonia_01('C'))
+        self.botao = Button(self.janela, text='Iniciar', bg='orange', activebackground='orange', fg='white', activeforeground='white', relief='groove', font=('arial', 14, 'bold'), width=7, command = lambda: self.harmonia_01('C'))
         self.botao.place(x=212,y=230)
 
         logoImg2 = PhotoImage(file="img/guitarMan2.png")
@@ -50,9 +51,9 @@ class jogo:
         
         self.janela.mainloop()
     def efeito_botao_crescer(self):
-        self.contador += 1
+        self.contBrilho += 1
 
-        if self.contador % 2 == 0:
+        if self.contBrilho % 2 == 0:
             self.botao['fg'] = 'white'
 
         else:
@@ -111,19 +112,19 @@ class jogo:
             lb3.place(x=280,y=160)
 
 
-        self.bt1 = Button(self.janela, text='1º', command = lambda: self.harmonia(1), bg='orange', fg='white', width='5', border=1)
+        self.bt1 = Button(self.janela, text='1º', command = lambda: self.harmonia(1), bg='orange', fg='white', width='5', relief='groove')
         self.bt1.place(x=80,y=245)
-        self.bt2 = Button(self.janela, text='2º', command = lambda: self.harmonia(2), bg='orange', fg='white', width='5', border=1)
+        self.bt2 = Button(self.janela, text='2º', command = lambda: self.harmonia(2), bg='orange', fg='white', width='5', relief='groove')
         self.bt2.place(x=130,y=245)
-        self.bt3 = Button(self.janela, text='3º', command = lambda: self.harmonia(3), bg='orange', fg='white', width='5', border=1)
+        self.bt3 = Button(self.janela, text='3º', command = lambda: self.harmonia(3), bg='orange', fg='white', width='5', relief='groove')
         self.bt3.place(x=180,y=245)
-        self.bt4 = Button(self.janela, text='4º', command = lambda: self.harmonia(4), bg='orange', fg='white', width='5', border=1)
+        self.bt4 = Button(self.janela, text='4º', command = lambda: self.harmonia(4), bg='orange', fg='white', width='5', relief='groove')
         self.bt4.place(x=230,y=245)
-        self.bt5 = Button(self.janela, text='5º', command = lambda: self.harmonia(5), bg='orange', fg='white', width='5', border=1)
+        self.bt5 = Button(self.janela, text='5º', command = lambda: self.harmonia(5), bg='orange', fg='white', width='5', relief='groove')
         self.bt5.place(x=280,y=245)
-        self.bt6 = Button(self.janela, text='6º', command = lambda: self.harmonia(6), bg='orange', fg='white', width='5', border=1)
+        self.bt6 = Button(self.janela, text='6º', command = lambda: self.harmonia(6), bg='orange', fg='white', width='5', relief='groove')
         self.bt6.place(x=330,y=245)
-        self.bt7 = Button(self.janela, text='7º', command = lambda: self.harmonia(7), bg='orange', fg='white', width='5', border=1)
+        self.bt7 = Button(self.janela, text='7º', command = lambda: self.harmonia(7), bg='orange', fg='white', width='5', relief='groove')
         self.bt7.place(x=380,y=245)
 
         logoImg1 = PhotoImage(file="img/guitarMan1.png")

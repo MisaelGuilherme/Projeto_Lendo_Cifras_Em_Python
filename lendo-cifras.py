@@ -54,10 +54,10 @@ class jogo:
         self.contBrilho += 1
 
         if self.contBrilho % 2 == 0:
-            self.botao['fg'] = 'white'
+            self.botao['fg'] = 'orange'
 
         else:
-            self.botao['fg'] = 'orange'
+            self.botao['fg'] = 'white'
         
         self.botao.after(500, self.efeito_botao_crescer)
         
@@ -132,6 +132,23 @@ class jogo:
         self.logoimage2.place(x=280, y=300)
 
         self.janela.mainloop()
+
+    def reiniciar(self):
+        
+        def brilhar():
+            
+            self.contBrilho += 1
+            
+            if self.contBrilho % 2 == 0:
+                self.reiniciar['fg'] = 'orange'
+            else:
+                self.reiniciar['fg'] = 'white'
+            self.reiniciar.after(300, brilhar)
+
+        self.reiniciar = Button(self.janela, text='Vamos de Novo?', bg='white', activebackground='white', fg='orange', activeforeground='orange', border=0, font=('arial', 18, 'bold'))
+        self.reiniciar.place(x=50, y=350)
+        
+        brilhar()
         
     def harmonia(self, grau):
                 
@@ -159,6 +176,8 @@ class jogo:
                 logoimage3 = Label(self.janela, image=logoImg3, bg='white')
                 logoimage3.place(x=300, y=300)
 
+                self.reiniciar()
+
                 self.janela.mainloop()                
 
         if grau == 2:
@@ -184,6 +203,8 @@ class jogo:
                 logoimage3 = Label(self.janela, image=logoImg3, bg='white')
                 logoimage3.place(x=300, y=300)
 
+                self.reiniciar()
+                
                 self.janela.mainloop()
 
         if grau == 3:
@@ -208,6 +229,8 @@ class jogo:
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
                 logoimage3 = Label(self.janela, image=logoImg3, bg='white')
                 logoimage3.place(x=300, y=300)
+                
+                self.reiniciar()
 
                 self.janela.mainloop()
                 
@@ -233,6 +256,8 @@ class jogo:
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
                 logoimage3 = Label(self.janela, image=logoImg3, bg='white')
                 logoimage3.place(x=300, y=300)
+                
+                self.reiniciar()
 
                 self.janela.mainloop()
                 
@@ -258,6 +283,8 @@ class jogo:
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
                 logoimage3 = Label(self.janela, image=logoImg3, bg='white')
                 logoimage3.place(x=300, y=300)
+                
+                self.reiniciar()
 
                 self.janela.mainloop()
         if grau == 6:
@@ -282,6 +309,8 @@ class jogo:
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
                 logoimage3 = Label(self.janela, image=logoImg3, bg='white')
                 logoimage3.place(x=300, y=300)
+                
+                self.reiniciar()
 
                 self.janela.mainloop()
 
@@ -307,6 +336,8 @@ class jogo:
                 logoImg3 = PhotoImage(file="img/guitarMan3.png")
                 logoimage3 = Label(self.janela, image=logoImg3, bg='white')
                 logoimage3.place(x=300, y=300)
+                
+                self.reiniciar()
 
                 self.janela.mainloop()
 

@@ -113,7 +113,7 @@ class jogo:
 
 
 
-
+    #--- Função responsável por selecionar quais notas aleatoriamente  irão imprimir na tela ---
     def escolhendo_notas_formar(self, tom):
         
         if tom == 'C':
@@ -167,8 +167,10 @@ class jogo:
         self.lb2.place(x=230,y=160)
         self.lb3.place(x=280,y=160)          
         
+        #Invocando função responsável por mostrar quais notas aleatoriamente irão aparecer
         self.escolhendo_notas_formar('C')
-                 
+
+        #Botões que referenciam cada grau das notas
         self.bt1 = Button(self.janela, text='1º', command = lambda: self.harmonia(1), bg='orange', fg='white', width='5', relief='groove')
         self.bt1.place(x=80,y=245)
         self.bt2 = Button(self.janela, text='2º', command = lambda: self.harmonia(2), bg='orange', fg='white', width='5', relief='groove')
@@ -184,14 +186,20 @@ class jogo:
         self.bt7 = Button(self.janela, text='7º', command = lambda: self.harmonia(7), bg='orange', fg='white', width='5', relief='groove')
         self.bt7.place(x=380,y=245)
 
+        #Homem com guitarra de brinquedo enquanto o jogador tentar acertas os exercícios das notas
         logoImg1 = PhotoImage(file="img/guitarMan1.png")
         self.logoimage2 = Label(self.janela, image=logoImg1, bg='white')
         self.logoimage2.place(x=280, y=300)
 
         self.janela.mainloop()
 
+
+
+
+    #--- Função responsável por reiniciar todo processo caso o jogador queira jogar novamente ---
     def reiniciar(self):
         
+        #Função que irá reinicializar os labels e botões zerando tudo
         def restart():
             
             self.contador = 0
@@ -216,6 +224,7 @@ class jogo:
             
             self.janela.mainloop()
         
+        #Função que fará o botão de jogar novamente piscar
         def brilhar():
             
             self.contBrilho += 1
@@ -226,11 +235,17 @@ class jogo:
                 self.botaoReiniciar['fg'] = 'white'
             self.botaoReiniciar.after(300, brilhar)
 
+        #Botão de restart caso o jogador queira jogar novamente
         self.botaoReiniciar = Button(self.janela, text='Vamos de Novo?', bg='white', activebackground='white', fg='orange', activeforeground='orange', border=0, font=('arial', 18, 'bold'), command=restart)
         self.botaoReiniciar.place(x=50, y=350)
         
+        #Chamando a função responsável por fazer o botão reiniciar piscar
         brilhar()
-        
+
+    
+    
+    
+    #--- Função de verificação onde ao clicar no botão irá verificar se foi atingido a meta, e o jogador venceu---
     def harmonia(self, grau):
                 
         if grau == 1:

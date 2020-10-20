@@ -2,10 +2,10 @@ from tkinter import *
 from random import *
 import pygame
 
-pygame.init()
+"""pygame.init()
 pygame.mixer.music.load('song/music1.mp3')
 pygame.mixer.music.play()
-pygame.event.wait()
+pygame.event.wait()"""
 
 class jogo:
     def __init__(self):
@@ -15,6 +15,7 @@ class jogo:
         self.contador = 0
         self.janela = Tk()
         self.janela.geometry('500x500+350+100')
+        self.janela.attributes("-alpha", 0.9)
         self.janela.resizable(False, False)
         #janela.minsize(400,400)
         #janela.maxsize(600,600)
@@ -27,17 +28,17 @@ class jogo:
         self.logoimage1 = Label(self.janela, image=logoImg1, bg='white')
         self.logoimage1.place(x=10, y=70)        
         
-        self.titulo1 = Label(self.janela, text='Campo Harmonico', font=('arial',20,'bold'), bg='white', fg='orange')
-        self.titulo1.place(x=140,y=30)
+        self.titulo1 = Label(self.janela, text='Campo Harmonico', font=('earwig factory',30), bg='white', fg='orange')
+        self.titulo1.place(x=80,y=20)
         
-        self.titulo2 = Label(self.janela, text='De', font=('arial',18,'bold'), bg='white', fg='orange')
+        self.titulo2 = Label(self.janela, text='De', font=('earwig factory',25), bg='white', fg='orange')
         self.titulo2.place(x=240,y=90)
         
-        self.titulo3 = Label(self.janela, text='C', font=('arial',25,'bold'), bg='white', fg='orange')
-        self.titulo3.place(x=240,y=140)
+        self.titulo3 = Label(self.janela, text='C', font=('hanging letters',45), bg='white', fg='orange')
+        self.titulo3.place(x=240,y=130)   
 
-        self.botao = Button(self.janela, text='Iniciar', bg='orange', activebackground='orange', fg='white', activeforeground='white', relief='groove', font=('arial', 14, 'bold'), width=7, command = lambda: self.harmonia_01('C'))
-        self.botao.place(x=212,y=230)
+        self.botao = Button(self.janela, text='b', bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('font bottons music pro', 60), border=0, command = lambda: self.harmonia_01('C'))
+        self.botao.place(x=170,y=200)    
 
         logoImg2 = PhotoImage(file="img/guitarMan2.png")
         self.logoimage2 = Label(self.janela, image=logoImg2, bg='white')
@@ -45,8 +46,8 @@ class jogo:
         
         iconAud = PhotoImage(file='img/audio.png')
         self.audio = Button(self.janela, image=iconAud, bg='white', border=0, command = lambda: self.som())
-        self.audio.place(x=450, y=10)
-        
+        self.audio.place(x=450, y=10)    
+                
         self.efeito_botao_crescer()
         
         self.janela.mainloop()

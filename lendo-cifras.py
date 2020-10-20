@@ -7,16 +7,19 @@ class jogo:
     
     def __init__(self):
         
+        #Variáveis responsáveis por alguns controles do programa
         self.confirmarPausa = False
         self.listaBotao = []
         self.contBrilho = 0
         self.contador = 0
         
+        #Iniciando mixer de trilha sonora principal do programa
         pygame.init()
         pygame.mixer.music.load('song/tema_principal.mp3')
         pygame.mixer.music.play(-1)
         pygame.event.wait()        
         
+        #Iniciando janela principal
         self.janela = Tk()
         self.janela.geometry('500x500+350+100')
         #self.janela.attributes("-alpha", 0.9)
@@ -28,6 +31,7 @@ class jogo:
         self.janela.iconbitmap("icons/violao.ico")
         self.janela['bg'] = 'white'
 
+        #Imagem de violão na tela principal
         logoImg1 = PhotoImage(file="img/viola3.png")
         self.logoimage1 = Label(self.janela, image=logoImg1, bg='white')
         self.logoimage1.place(x=10, y=70)        
@@ -41,21 +45,29 @@ class jogo:
         self.titulo3 = Label(self.janela, text='C', font=('hanging letters',45), bg='white', fg='orange')
         self.titulo3.place(x=240,y=130)   
 
-        self.botao = Button(self.janela, text='b', bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('font bottons music pro', 60), border=0, command = lambda: self.harmonia_01('C'))
+        self.botao = Button(self.janela, text='b', bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('font bottons music pro', 60), border=0, command = lambda: self.tom_da_harmonia('C'))
         self.botao.place(x=170,y=200)    
 
+        #Imagem de homem tocando guitarra de brinquedo
         logoImg2 = PhotoImage(file="img/guitarMan2.png")
         self.logoimage2 = Label(self.janela, image=logoImg2, bg='white')
         self.logoimage2.place(x=280, y=310)
         
+        #Icone do mutar ou abrir audio, na margem superior da janela principal
         iconAud = PhotoImage(file='img/audio.png')
         self.audio = Button(self.janela, image=iconAud, bg='white', activebackground='white', border=0, command = lambda: self.som())
         self.audio.place(x=450, y=10)    
                 
+        #Função que invocará procedimentos para fazer o botão principal piscar
         self.efeito_botao_crescer()
         
         self.janela.mainloop()
+        
+        
+        
+    #--- Função responsável por fazer o botão da janela principal psicar ---        
     def efeito_botao_crescer(self):
+        
         self.contBrilho += 1
 
         if self.contBrilho % 2 == 0:
@@ -65,9 +77,14 @@ class jogo:
             self.botao['fg'] = 'white'
         
         self.botao.after(500, self.efeito_botao_crescer)
-        
+    
+    
+    
+    
+    #--- Função responsável por tirar a música de fundo ao clicar no botão de volume da janela principal ---
     def som(self):
         
+        #Se a função for invocada destruirá o ícone atual e criará o ícone de "mudo"
         if pygame.mixer.music.get_busy() and self.confirmarPausa == False:
             self.audio.destroy()
             
@@ -80,6 +97,7 @@ class jogo:
             
             self.confirmarPausa = True
         
+        #Senão destruirá o de mudo e criará o de o botão de volume
         else:            
             self.mudo.destroy()
             self.confirmarPausa = False
@@ -93,23 +111,12 @@ class jogo:
             
         self.janela.mainloop()
 
-    def harmonia_01(self, grau):
 
-        self.titulo1.destroy()
-        self.titulo2.destroy()
-        self.titulo3.destroy()
-        self.botao.destroy()
-        self.logoimage1.destroy()
-        self.logoimage2.destroy()
+
+
+    def escolhendo_notas_formar(self, tom):
         
-        iconVio = PhotoImage(file='img/viola00.png')
-        self.viola = Label(self.janela, image=iconVio, bg='white', border=0)
-        self.viola.place(x=-130, y=40)
-        
-        txt1 = Label(self.janela, text='Informe na Ordem o Grau das Notas', font=('arial',15,'bold'), bg='white', fg='orange')
-        txt1.place(x=80,y=20)        
-        
-        if grau == 'C':
+        if tom == 'C':
             
             self.lista = ['C','Dm','Em','F','G','Am','Bº']
             notas = []
@@ -126,15 +133,42 @@ class jogo:
 
             self.dd = [False,False,False]
             self.listaEmba = [v1,v2,v3]
-                
-            lb1 = Label(self.janela, text=v1, font=('hanging letters',25), fg='orange', bg='white', width=3)
-            lb2 = Label(self.janela, text=v2, font=('hanging letters',25), fg='orange',bg='white', width=3)
-            lb3 = Label(self.janela, text=v3, font=('hanging letters',25), fg='orange',bg='white', width=3)
-            lb1.place(x=180,y=160)
-            lb2.place(x=230,y=160)
-            lb3.place(x=280,y=160)
+            
+            self.lb1['text'] = v1
+            self.lb2['text'] = v2
+            self.lb3['text'] = v3
 
 
+
+        
+    #--- Função responsável por identicar qual o tom escolhido e interpretár os exercícios propostos ---
+    def tom_da_harmonia(self, grau):
+
+        #Destruindo os labels e botões da janela principal, fazendo um reaproveitamento da mesma janela
+        self.titulo1.destroy()
+        self.titulo2.destroy()
+        self.titulo3.destroy()
+        self.botao.destroy()
+        self.logoimage1.destroy()
+        self.logoimage2.destroy()
+        
+        #Imagem de violão na honrizontal na janela principal
+        iconVio = PhotoImage(file='img/viola00.png')
+        self.viola = Label(self.janela, image=iconVio, bg='white', border=0)
+        self.viola.place(x=-130, y=40)
+        
+        txt1 = Label(self.janela, text='Informe na Ordem o Grau das Notas', font=('arial',15,'bold'), bg='white', fg='orange')
+        txt1.place(x=80,y=20)        
+        
+        self.lb1 = Label(self.janela, text='', font=('hanging letters',25), fg='orange', bg='white', width=3)
+        self.lb2 = Label(self.janela, text='', font=('hanging letters',25), fg='orange',bg='white', width=3)
+        self.lb3 = Label(self.janela, text='', font=('hanging letters',25), fg='orange',bg='white', width=3)
+        self.lb1.place(x=180,y=160)
+        self.lb2.place(x=230,y=160)
+        self.lb3.place(x=280,y=160)          
+        
+        self.escolhendo_notas_formar('C')
+                 
         self.bt1 = Button(self.janela, text='1º', command = lambda: self.harmonia(1), bg='orange', fg='white', width='5', relief='groove')
         self.bt1.place(x=80,y=245)
         self.bt2 = Button(self.janela, text='2º', command = lambda: self.harmonia(2), bg='orange', fg='white', width='5', relief='groove')
@@ -159,7 +193,9 @@ class jogo:
     def reiniciar(self):
         
         def restart():
+            
             self.contador = 0
+            
             self.bt1['bg'] = 'orange'
             self.bt2['bg'] = 'orange'
             self.bt3['bg'] = 'orange'
@@ -168,22 +204,30 @@ class jogo:
             self.bt6['bg'] = 'orange'
             self.bt7['bg'] = 'orange'
             
-            self.reiniciar.destroy()
+            self.botaoReiniciar.destroy()
             
             self.logoimage3.destroy()
+            
+            logoImg1 = PhotoImage(file="img/guitarMan1.png")
+            self.logoimage2 = Label(self.janela, image=logoImg1, bg='white')
+            self.logoimage2.place(x=280, y=300)            
+            
+            self.escolhendo_notas_formar('C')            
+            
+            self.janela.mainloop()
         
         def brilhar():
             
             self.contBrilho += 1
             
             if self.contBrilho % 2 == 0:
-                self.reiniciar['fg'] = 'orange'
+                self.botaoReiniciar['fg'] = 'orange'
             else:
-                self.reiniciar['fg'] = 'white'
-            self.reiniciar.after(300, brilhar)
+                self.botaoReiniciar['fg'] = 'white'
+            self.botaoReiniciar.after(300, brilhar)
 
-        self.reiniciar = Button(self.janela, text='Vamos de Novo?', bg='white', activebackground='white', fg='orange', activeforeground='orange', border=0, font=('arial', 18, 'bold'), command=restart)
-        self.reiniciar.place(x=50, y=350)
+        self.botaoReiniciar = Button(self.janela, text='Vamos de Novo?', bg='white', activebackground='white', fg='orange', activeforeground='orange', border=0, font=('arial', 18, 'bold'), command=restart)
+        self.botaoReiniciar.place(x=50, y=350)
         
         brilhar()
         

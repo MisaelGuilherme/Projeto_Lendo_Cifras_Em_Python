@@ -2,17 +2,21 @@ from tkinter import *
 from random import *
 import pygame
 
-pygame.init()
-pygame.mixer.music.load('song/tema_principal.mp3')
-pygame.mixer.music.play(-1)
-pygame.event.wait()
 
 class jogo:
+    
     def __init__(self):
         
+        self.confirmarPausa = False
         self.listaBotao = []
         self.contBrilho = 0
         self.contador = 0
+        
+        pygame.init()
+        pygame.mixer.music.load('song/tema_principal.mp3')
+        pygame.mixer.music.play(-1)
+        pygame.event.wait()        
+        
         self.janela = Tk()
         self.janela.geometry('500x500+350+100')
         #self.janela.attributes("-alpha", 0.9)
@@ -45,7 +49,7 @@ class jogo:
         self.logoimage2.place(x=280, y=310)
         
         iconAud = PhotoImage(file='img/audio.png')
-        self.audio = Button(self.janela, image=iconAud, bg='white', border=0, command = lambda: self.som())
+        self.audio = Button(self.janela, image=iconAud, bg='white', activebackground='white', border=0, command = lambda: self.som())
         self.audio.place(x=450, y=10)    
                 
         self.efeito_botao_crescer()
@@ -64,11 +68,29 @@ class jogo:
         
     def som(self):
         
-        self.audio.destroy()
-        iconAud2 = PhotoImage(file='img/mute.png')
-        mudo = Button(self.janela, image=iconAud2, border=0, bg='white')
-        mudo.place(x=450, y=10)
+        if pygame.mixer.music.get_busy() and self.confirmarPausa == False:
+            self.audio.destroy()
+            
+            iconAud2 = PhotoImage(file='img/mute.png')
+            
+            self.mudo = Button(self.janela, image=iconAud2, border=0, bg='white', activebackground='white', command = self.som)
+            self.mudo.place(x=450, y=10)
+            
+            pygame.mixer.music.set_volume(0.0)
+            
+            self.confirmarPausa = True
         
+        else:            
+            self.mudo.destroy()
+            self.confirmarPausa = False
+            
+            iconAud = PhotoImage(file='img/audio.png')
+            
+            self.audio = Button(self.janela, image=iconAud, bg='white', activebackground='white', border=0,    command = self.som)
+            self.audio.place(x=450, y=10)
+            
+            pygame.mixer.music.set_volume(1.0)
+            
         self.janela.mainloop()
 
     def harmonia_01(self, grau):

@@ -1,8 +1,19 @@
+#Programador: Misael Jesus
+#Date: 23/09/2020
+#e_mail: misaelleite2002@gmail.com
+
+'''
+Para que seja possível a execução do código, e necésário que possua o módulo "pygame" baixado e instalado no seu python,
+também será preciso que baixe os arquivos e pastas referente a esta aplicação, caso contrário não irá funcionar.
+Baixes a pasta completa e em seguida é só executar a aplicação. Bom proveito!!
+'''
+
+#Importando Módulos
 from tkinter import *
 from random import *
 import pygame
 
-
+#Classe contendo toda a aplicação
 class jogo:
     
     def __init__(self):

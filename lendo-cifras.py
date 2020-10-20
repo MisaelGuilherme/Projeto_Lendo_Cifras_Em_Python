@@ -2,10 +2,10 @@ from tkinter import *
 from random import *
 import pygame
 
-"""pygame.init()
-pygame.mixer.music.load('song/music1.mp3')
-pygame.mixer.music.play()
-pygame.event.wait()"""
+pygame.init()
+pygame.mixer.music.load('song/tema_principal.mp3')
+pygame.mixer.music.play(-1)
+pygame.event.wait()
 
 class jogo:
     def __init__(self):
@@ -15,7 +15,7 @@ class jogo:
         self.contador = 0
         self.janela = Tk()
         self.janela.geometry('500x500+350+100')
-        self.janela.attributes("-alpha", 0.9)
+        #self.janela.attributes("-alpha", 0.9)
         self.janela.resizable(False, False)
         #janela.minsize(400,400)
         #janela.maxsize(600,600)
@@ -42,7 +42,7 @@ class jogo:
 
         logoImg2 = PhotoImage(file="img/guitarMan2.png")
         self.logoimage2 = Label(self.janela, image=logoImg2, bg='white')
-        self.logoimage2.place(x=240, y=270)
+        self.logoimage2.place(x=280, y=310)
         
         iconAud = PhotoImage(file='img/audio.png')
         self.audio = Button(self.janela, image=iconAud, bg='white', border=0, command = lambda: self.som())
@@ -105,9 +105,9 @@ class jogo:
             self.dd = [False,False,False]
             self.listaEmba = [v1,v2,v3]
                 
-            lb1 = Label(self.janela, text=v1, font=('arial',18,'bold'), bg='white', width=3)
-            lb2 = Label(self.janela, text=v2, font=('arial',18,'bold'), bg='white', width=3)
-            lb3 = Label(self.janela, text=v3, font=('arial',18,'bold'), bg='white', width=3)
+            lb1 = Label(self.janela, text=v1, font=('hanging letters',25), fg='orange', bg='white', width=3)
+            lb2 = Label(self.janela, text=v2, font=('hanging letters',25), fg='orange',bg='white', width=3)
+            lb3 = Label(self.janela, text=v3, font=('hanging letters',25), fg='orange',bg='white', width=3)
             lb1.place(x=180,y=160)
             lb2.place(x=230,y=160)
             lb3.place(x=280,y=160)

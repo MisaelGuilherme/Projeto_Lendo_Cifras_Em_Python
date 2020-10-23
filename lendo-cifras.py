@@ -269,7 +269,11 @@ class jogo:
             
             logoImg1 = PhotoImage(file="img/guitarMan1.png")
             self.logoimage2 = Label(self.janela, image=logoImg1, bg='white')
-            self.logoimage2.place(x=280, y=300)            
+            self.logoimage2.place(x=280, y=300)     
+            
+            pygame.mixer.music.stop()
+            pygame.mixer.music.load('song/jazz_piano.mp3')       
+            pygame.mixer.music.play()
             
             self.escolhendo_notas_formar('C')            
             
@@ -325,6 +329,9 @@ class jogo:
                 self.logoimage3.place(x=300, y=300)
 
                 self.reiniciar()
+                pygame.mixer.music.stop()
+                pygame.mixer.music.load('song/aplausos.mp3')
+                pygame.mixer.music.play()
 
                 self.janela.mainloop()                
         
@@ -353,6 +360,9 @@ class jogo:
                 self.logoimage3.place(x=300, y=300)
 
                 self.reiniciar()
+                pygame.mixer.music.stop()
+                pygame.mixer.music.load('song/aplausos.mp3')
+                pygame.mixer.music.play()
                 
                 self.janela.mainloop()
 
@@ -381,6 +391,9 @@ class jogo:
                 self.logoimage3.place(x=300, y=300)
                 
                 self.reiniciar()
+                pygame.mixer.music.stop()
+                pygame.mixer.music.load('song/aplausos.mp3')
+                pygame.mixer.music.play()
 
                 self.janela.mainloop()
                 
@@ -409,6 +422,9 @@ class jogo:
                 self.logoimage3.place(x=300, y=300)
                 
                 self.reiniciar()
+                pygame.mixer.music.stop()
+                pygame.mixer.music.load('song/aplausos.mp3')
+                pygame.mixer.music.play()
 
                 self.janela.mainloop()
                 
@@ -437,6 +453,9 @@ class jogo:
                 self.logoimage3.place(x=300, y=300)
                 
                 self.reiniciar()
+                pygame.mixer.music.stop()
+                pygame.mixer.music.load('song/aplausos.mp3')
+                pygame.mixer.music.play()
 
                 self.janela.mainloop()
                 
@@ -465,6 +484,9 @@ class jogo:
                 self.logoimage3.place(x=300, y=300)
                 
                 self.reiniciar()
+                pygame.mixer.music.stop()
+                pygame.mixer.music.load('song/aplausos.mp3')
+                pygame.mixer.music.play()
 
                 self.janela.mainloop()
 
@@ -493,6 +515,9 @@ class jogo:
                 self.logoimage3.place(x=300, y=300)
                 
                 self.reiniciar()
+                pygame.mixer.music.stop()
+                pygame.mixer.music.load('song/aplausos.mp3')
+                pygame.mixer.music.play()
 
                 self.janela.mainloop()
 

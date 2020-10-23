@@ -279,6 +279,9 @@ class jogo:
             
             self.janela.mainloop()
         
+        
+        
+        
         #Função que fará o botão de jogar novamente piscar
         def brilhar():
             
@@ -297,6 +300,50 @@ class jogo:
         #Chamando a função responsável por fazer o botão reiniciar piscar
         brilhar()
 
+
+
+    #Função responsável por configurar layout de vitória  caso o jogador tenha acertado as alternativas
+    def partida_vencida(self):
+            
+        self.logoimage2.destroy()
+        logoImg3 = PhotoImage(file="img/guitarMan3.png")
+        self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
+        self.logoimage3.place(x=300, y=300)
+
+        self.reiniciar()
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load('song/aplausos.mp3')
+        pygame.mixer.music.play()
+        
+        self.janela.mainloop()
+        
+        
+        
+    #Função responsável por verificar os botões caso e configurando a cor caso haja acerto
+    def verificar_acerto(self, DD1, DD2, DD3, L1, LB1, LB2, LB3, botaoNum):
+        
+        #Verificando acerto caso o botão seja apertado            
+        if  self.dd[0] == False and self.lista[L1] == self.listaEmba[0]:
+            botaoNum['bg'] = 'green'
+            self.dd[0] = True
+            self.contador += 1
+        
+        elif self.dd[0] == True and self.dd[1] == False and self.lista[L1] == self.listaEmba[1]:
+            botaoNum['bg'] = 'green'
+            self.dd[1] = True
+            self.contador += 1
+        
+        elif self.dd[0] == True and self.dd[1] == True and self.dd[2] == False and self.lista[L1] == self.listaEmba[2]:
+            botaoNum['bg'] = 'green'
+            self.dd[2] = True
+            self.contador += 1
+        else:
+            botaoNum['bg'] = 'red' 
+            
+        if self.contador >= 3:
+
+            self.partida_vencida()        
+    
     
     
     
@@ -306,221 +353,37 @@ class jogo:
         #Verificando acerto caso o botão de grau 1 seja apertado
         if grau == 1:
             
-            if  self.dd[0] == False and self.lista[0] == self.listaEmba[0]:
-                self.bt1['bg'] = 'green'
-                self.dd[0] = True
-                self.contador += 1
-            elif self.dd[0] == True and self.dd[1] == False and self.lista[0] == self.listaEmba[1]:
-                self.bt1['bg'] = 'green'
-                self.dd[1] = True
-                self.contador += 1
-            elif self.dd[0] == True and self.dd[1] == True and self.dd[2] == False and self.lista[0] == self.listaEmba[2]:
-                self.bt1['bg'] = 'green'
-                self.dd[2] = True
-                self.contador += 1
-            else:
-                self.bt1['bg'] = 'red'
+            self.verificar_acerto(0, 1, 2, 0, 0, 1, 2, self.bt1)
                 
-            if self.contador >= 3:
-
-                self.logoimage2.destroy()
-                logoImg3 = PhotoImage(file="img/guitarMan3.png")
-                self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                self.logoimage3.place(x=300, y=300)
-
-                self.reiniciar()
-                pygame.mixer.music.stop()
-                pygame.mixer.music.load('song/aplausos.mp3')
-                pygame.mixer.music.play()
-
-                self.janela.mainloop()                
-        
         #Verificando acerto caso o botão de grau 2 seja apertado
         if grau == 2:
-            if  self.dd[0] == False and self.lista[1] == self.listaEmba[0]:
-                self.bt2['bg'] = 'green'
-                self.dd[0] = True
-                self.contador += 1
-            elif self.dd[0] == True and self.dd[1] == False and self.lista[1] == self.listaEmba[1]:
-                self.bt2['bg'] = 'green'
-                self.dd[1] = True
-                self.contador += 1
-            elif self.dd[0] == True and self.dd[1] == True and self.dd[2] == False and self.lista[1] == self.listaEmba[2]:
-                self.bt2['bg'] = 'green'
-                self.dd[2] = True
-                self.contador += 1
-            else:
-                self.bt2['bg'] = 'red'
-
-            if self.contador >= 3:
-                
-                self.logoimage2.destroy()
-                logoImg3 = PhotoImage(file="img/guitarMan3.png")
-                self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                self.logoimage3.place(x=300, y=300)
-
-                self.reiniciar()
-                pygame.mixer.music.stop()
-                pygame.mixer.music.load('song/aplausos.mp3')
-                pygame.mixer.music.play()
-                
-                self.janela.mainloop()
+            
+            self.verificar_acerto(0, 1, 2, 1, 0, 1, 2, self.bt2)
 
         #Verificando acerto caso o botão de grau 3 seja apertado
         if grau == 3:
-            if  self.dd[0] == False and self.lista[2] == self.listaEmba[0]:
-                self.bt3['bg'] = 'green'
-                self.dd[0] = True
-                self.contador += 1
-            elif self.dd[0] == True and self.dd[1] == False and self.lista[2] == self.listaEmba[1]:
-                self.bt3['bg'] = 'green'
-                self.dd[1] = True
-                self.contador += 1
-            elif self.dd[0] == True and self.dd[1] == True and self.dd[2] == False and self.lista[2] == self.listaEmba[2]:
-                self.bt3['bg'] = 'green'
-                self.dd[2] = True
-                self.contador += 1
-            else:
-                self.bt3['bg'] = 'red'
-
-            if self.contador >= 3:
-
-                self.logoimage2.destroy()
-                logoImg3 = PhotoImage(file="img/guitarMan3.png")
-                self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                self.logoimage3.place(x=300, y=300)
-                
-                self.reiniciar()
-                pygame.mixer.music.stop()
-                pygame.mixer.music.load('song/aplausos.mp3')
-                pygame.mixer.music.play()
-
-                self.janela.mainloop()
+            
+            self.verificar_acerto(0, 1, 2, 2, 0, 1, 2, self.bt3)            
                 
         #Verificando acerto caso o botão de grau 4 seja apertado                
         if grau == 4:
-            if  self.dd[0] == False and self.lista[3] == self.listaEmba[0]:
-                self.bt4['bg'] = 'green'
-                self.dd[0] = True
-                self.contador += 1
-            elif self.dd[0] == True and self.dd[1] == False and self.lista[3] == self.listaEmba[1]:
-                self.bt4['bg'] = 'green'
-                self.dd[1] = True
-                self.contador += 1
-            elif self.dd[0] == True and self.dd[1] == True and self.dd[2] == False and self.lista[3] == self.listaEmba[2]:
-                self.bt4['bg'] = 'green'
-                self.dd[2] = True
-                self.contador += 1
-            else:
-                self.bt4['bg'] = 'red'
-
-            if self.contador >= 3:
-
-                self.logoimage2.destroy()
-                logoImg3 = PhotoImage(file="img/guitarMan3.png")
-                self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                self.logoimage3.place(x=300, y=300)
-                
-                self.reiniciar()
-                pygame.mixer.music.stop()
-                pygame.mixer.music.load('song/aplausos.mp3')
-                pygame.mixer.music.play()
-
-                self.janela.mainloop()
+            
+            self.verificar_acerto(0, 1, 2, 3, 0, 1, 2, self.bt4)
                 
         #Verificando acerto caso o botão de grau 5 seja apertado
         if grau == 5:
-            if  self.dd[0] == False and self.lista[4] == self.listaEmba[0]:
-                self.bt5['bg'] = 'green'
-                self.dd[0] = True
-                self.contador += 1
-            elif self.dd[0] == True and self.dd[1] == False and self.lista[4] == self.listaEmba[1]:
-                self.bt5['bg'] = 'green'
-                self.dd[1] = True
-                self.contador += 1
-            elif self.dd[0] == True and self.dd[1] == True and self.dd[2] == False and self.lista[4] == self.listaEmba[2]:
-                self.bt5['bg'] = 'green'
-                self.dd[2] = True
-                self.contador += 1
-            else:
-                self.bt5['bg'] = 'red'
-
-            if self.contador >= 3:           
-
-                self.logoimage2.destroy()
-                logoImg3 = PhotoImage(file="img/guitarMan3.png")
-                self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                self.logoimage3.place(x=300, y=300)
-                
-                self.reiniciar()
-                pygame.mixer.music.stop()
-                pygame.mixer.music.load('song/aplausos.mp3')
-                pygame.mixer.music.play()
-
-                self.janela.mainloop()
+            
+            self.verificar_acerto(0, 1, 2, 4, 0, 1, 2, self.bt5)
                 
         #Verificando acerto caso o botão de grau 6 seja apertado
         if grau == 6:
-            if  self.dd[0] == False and self.lista[5] == self.listaEmba[0]:
-                self.bt6['bg'] = 'green'
-                self.dd[0] = True
-                self.contador += 1
-            elif self.dd[0] == True and self.dd[1] == False and self.lista[5] == self.listaEmba[1]:
-                self.bt6['bg'] = 'green'
-                self.dd[1] = True
-                self.contador += 1
-            elif self.dd[0] == True and self.dd[1] == True and self.dd[2] == False and self.lista[5] == self.listaEmba[2]:
-                self.bt6['bg'] = 'green'
-                self.dd[2] = True
-                self.contador += 1
-            else:
-                self.bt6['bg'] = 'red'
-
-            if self.contador >= 3:
-
-                self.logoimage2.destroy()
-                logoImg3 = PhotoImage(file="img/guitarMan3.png")
-                self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                self.logoimage3.place(x=300, y=300)
-                
-                self.reiniciar()
-                pygame.mixer.music.stop()
-                pygame.mixer.music.load('song/aplausos.mp3')
-                pygame.mixer.music.play()
-
-                self.janela.mainloop()
+            
+            self.verificar_acerto(0, 1, 2, 5, 0, 1, 2, self.bt6)
 
         #Verificando acerto caso o botão de grau 7 seja apertado
         if grau == 7:
-            if  self.dd[0] == False and self.lista[6] == self.listaEmba[0]:
-                self.bt7['bg'] = 'green'
-                self.dd[0] = True
-                self.contador += 1
-            elif self.dd[0] == True and self.dd[1] == False and self.lista[6] == self.listaEmba[1]:
-                self.bt7['bg'] = 'green'
-                self.dd[1] = True
-                self.contador += 1
-            elif self.dd[0] == True and self.dd[1] == True and self.dd[2] == False and self.lista[6] == self.listaEmba[2]:
-                self.bt7['bg'] = 'green'
-                self.dd[2] = True
-                self.contador += 1
-            else:
-                self.bt7['bg'] = 'red'
-
-            if self.contador >= 3:          
-
-                self.logoimage2.destroy()
-                logoImg3 = PhotoImage(file="img/guitarMan3.png")
-                self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-                self.logoimage3.place(x=300, y=300)
-                
-                self.reiniciar()
-                pygame.mixer.music.stop()
-                pygame.mixer.music.load('song/aplausos.mp3')
-                pygame.mixer.music.play()
-
-                self.janela.mainloop()
-
+            
+            self.verificar_acerto(0, 1, 2, 6, 0, 1, 2, self.bt7)
 
     #lb1 = Label(janela, text='Digite o grauº da nota', font=('arial',10,'bold'))
     #lb1.place(x=10,y=100)

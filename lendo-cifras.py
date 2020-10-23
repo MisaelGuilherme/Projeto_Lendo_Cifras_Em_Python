@@ -323,7 +323,7 @@ class jogo:
         
         
     #Função responsável por verificar os botões caso e configurando a cor caso haja acerto
-    def verificar_acerto(self, DD1, DD2, DD3, L1, LB1, LB2, LB3, botaoNum):
+    def verificar_acerto(self, L1, botaoNum):
         
         #Verificando acerto caso o botão seja apertado            
         if  self.dd[0] == False and self.lista[L1] == self.listaEmba[0]:
@@ -356,37 +356,37 @@ class jogo:
         #Verificando acerto caso o botão de grau 1 seja apertado
         if grau == 1:
             
-            self.verificar_acerto(0, 1, 2, 0, 0, 1, 2, self.bt1)
+            self.verificar_acerto(0, self.bt1)
                 
         #Verificando acerto caso o botão de grau 2 seja apertado
         if grau == 2:
             
-            self.verificar_acerto(0, 1, 2, 1, 0, 1, 2, self.bt2)
+            self.verificar_acerto(1, self.bt2)
 
         #Verificando acerto caso o botão de grau 3 seja apertado
         if grau == 3:
             
-            self.verificar_acerto(0, 1, 2, 2, 0, 1, 2, self.bt3)            
+            self.verificar_acerto(2, self.bt3)            
                 
         #Verificando acerto caso o botão de grau 4 seja apertado                
         if grau == 4:
             
-            self.verificar_acerto(0, 1, 2, 3, 0, 1, 2, self.bt4)
+            self.verificar_acerto(3, self.bt4)
                 
         #Verificando acerto caso o botão de grau 5 seja apertado
         if grau == 5:
             
-            self.verificar_acerto(0, 1, 2, 4, 0, 1, 2, self.bt5)
+            self.verificar_acerto(4, self.bt5)
                 
         #Verificando acerto caso o botão de grau 6 seja apertado
         if grau == 6:
             
-            self.verificar_acerto(0, 1, 2, 5, 0, 1, 2, self.bt6)
+            self.verificar_acerto(5, self.bt6)
 
         #Verificando acerto caso o botão de grau 7 seja apertado
         if grau == 7:
             
-            self.verificar_acerto(0, 1, 2, 6, 0, 1, 2, self.bt7)
+            self.verificar_acerto(6, self.bt7)
 
     #lb1 = Label(janela, text='Digite o grauº da nota', font=('arial',10,'bold'))
     #lb1.place(x=10,y=100)

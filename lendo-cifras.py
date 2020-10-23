@@ -76,7 +76,7 @@ class jogo:
         
         
         
-    #--- Função responsável por fazer o botão da janela principal psicar ---        
+    #--- Função responsável por fazer o botão da janela principal piscar ---        
     def efeito_botao_crescer(self):
         
         self.contBrilho += 1
@@ -166,7 +166,12 @@ class jogo:
         #Imagem de violão na honrizontal na janela principal
         iconVio = PhotoImage(file='img/viola00.png')
         self.viola = Label(self.janela, image=iconVio, bg='white', border=0)
-        self.viola.place(x=-130, y=40)
+        self.viola.place(x=-130, y=50)
+        
+        imgVoltar = PhotoImage(file='icons/seta2.png')
+        self.botVoltar = Button(self.janela, image=imgVoltar, border=0, activebackground='white', bg='white')
+        self.botVoltar.place(x=5, y=5)
+                
         
         txt1 = Label(self.janela, text='Informe na Ordem o Grau das Notas', font=('arial',15,'bold'), bg='white', fg='orange')
         txt1.place(x=80,y=20)        

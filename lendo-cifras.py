@@ -19,6 +19,7 @@ class jogo:
     def __init__(self):
         
         #Variáveis responsáveis por alguns controles do programa
+        self.telaInicial = False
         self.confirmarPausa = False
         self.listaBotao = []
         self.contBrilho = 0
@@ -41,7 +42,11 @@ class jogo:
         self.janela.title('Lendo Cifra')
         self.janela.iconbitmap("icons/violao.ico")
         self.janela['bg'] = 'white'
-
+        self.componentes_janela_incial()
+        self.janela.mainloop()
+    
+    def componentes_janela_incial(self):        
+    
         #Imagem de violão na tela principal
         logoImg1 = PhotoImage(file="img/viola3.png")
         self.logoimage1 = Label(self.janela, image=logoImg1, bg='white')
@@ -56,7 +61,7 @@ class jogo:
         self.titulo3 = Label(self.janela, text='C', font=('hanging letters',45), bg='white', fg='orange')
         self.titulo3.place(x=240,y=130)   
 
-        self.botao = Button(self.janela, text='b', bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('font bottons music pro', 60), border=0, command = lambda: self.tom_da_harmonia('C'))
+        self.botao = Button(self.janela, text='b', bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('font bottons music pro', 60), border=0, command = lambda: self.janela_2_jogo('C'))
         self.botao.place(x=170,y=200)    
 
         #Imagem de homem tocando guitarra de brinquedo
@@ -153,7 +158,7 @@ class jogo:
 
         
     #--- Função responsável por identicar qual o tom escolhido e interpretár os exercícios propostos ---
-    def tom_da_harmonia(self, grau):
+    def janela_2_jogo(self, grau):
 
         #Destruindo os labels e botões da janela principal, fazendo um reaproveitamento da mesma janela
         self.titulo1.destroy()
@@ -168,13 +173,14 @@ class jogo:
         self.viola = Label(self.janela, image=iconVio, bg='white', border=0)
         self.viola.place(x=-130, y=50)
         
+        #Botão com imagem de seta indicadora de voltar
         imgVoltar = PhotoImage(file='icons/seta2.png')
-        self.botVoltar = Button(self.janela, image=imgVoltar, border=0, activebackground='white', bg='white')
+        self.botVoltar = Button(self.janela, image=imgVoltar, border=0, activebackground='white', bg='white', command=self.voltar)
         self.botVoltar.place(x=5, y=5)
                 
         
-        txt1 = Label(self.janela, text='Informe na Ordem o Grau das Notas', font=('arial',15,'bold'), bg='white', fg='orange')
-        txt1.place(x=80,y=20)        
+        self.txt1 = Label(self.janela, text='Informe na Ordem o Grau das Notas', font=('arial',15,'bold'), bg='white', fg='orange')
+        self.txt1.place(x=80,y=20)        
         
         self.lb1 = Label(self.janela, text='', font=('hanging letters',25), fg='orange', bg='white', width=3)
         self.lb2 = Label(self.janela, text='', font=('hanging letters',25), fg='orange',bg='white', width=3)
@@ -208,6 +214,27 @@ class jogo:
         self.logoimage2.place(x=280, y=300)
 
         self.janela.mainloop()
+
+    
+    
+    #Função responsável por quando apertar o botão de voltar retornar para a tela inicial
+    def voltar(self):
+        self.viola.destroy()
+        self.botVoltar.destroy()
+        self.txt1.destroy()
+        self.lb1.destroy()
+        self.lb2.destroy()
+        self.lb3.destroy()
+        self.bt1.destroy()
+        self.bt2.destroy()
+        self.bt3.destroy()
+        self.bt4.destroy()
+        self.bt5.destroy()
+        self.bt6.destroy()
+        self.bt7.destroy()
+        self.logoimage2.destroy()        
+        self.componentes_janela_incial()
+
 
 
 
@@ -263,7 +290,8 @@ class jogo:
     
     #--- Função de verificação onde ao clicar no botão irá verificar se foi atingido a meta, e o jogador venceu---
     def harmonia(self, grau):
-                
+        
+        #Verificando acerto caso o botão de grau 1 seja apertado
         if grau == 1:
             
             if  self.dd[0] == False and self.lista[0] == self.listaEmba[0]:
@@ -291,7 +319,8 @@ class jogo:
                 self.reiniciar()
 
                 self.janela.mainloop()                
-
+        
+        #Verificando acerto caso o botão de grau 2 seja apertado
         if grau == 2:
             if  self.dd[0] == False and self.lista[1] == self.listaEmba[0]:
                 self.bt2['bg'] = 'green'
@@ -319,6 +348,7 @@ class jogo:
                 
                 self.janela.mainloop()
 
+        #Verificando acerto caso o botão de grau 3 seja apertado
         if grau == 3:
             if  self.dd[0] == False and self.lista[2] == self.listaEmba[0]:
                 self.bt3['bg'] = 'green'
@@ -346,6 +376,7 @@ class jogo:
 
                 self.janela.mainloop()
                 
+        #Verificando acerto caso o botão de grau 4 seja apertado                
         if grau == 4:
             if  self.dd[0] == False and self.lista[3] == self.listaEmba[0]:
                 self.bt4['bg'] = 'green'
@@ -373,6 +404,7 @@ class jogo:
 
                 self.janela.mainloop()
                 
+        #Verificando acerto caso o botão de grau 5 seja apertado
         if grau == 5:
             if  self.dd[0] == False and self.lista[4] == self.listaEmba[0]:
                 self.bt5['bg'] = 'green'
@@ -399,6 +431,8 @@ class jogo:
                 self.reiniciar()
 
                 self.janela.mainloop()
+                
+        #Verificando acerto caso o botão de grau 6 seja apertado
         if grau == 6:
             if  self.dd[0] == False and self.lista[5] == self.listaEmba[0]:
                 self.bt6['bg'] = 'green'
@@ -426,6 +460,7 @@ class jogo:
 
                 self.janela.mainloop()
 
+        #Verificando acerto caso o botão de grau 7 seja apertado
         if grau == 7:
             if  self.dd[0] == False and self.lista[6] == self.listaEmba[0]:
                 self.bt7['bg'] = 'green'

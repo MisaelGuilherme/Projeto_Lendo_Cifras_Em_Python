@@ -72,7 +72,7 @@ class jogo:
         #Icone do mutar ou abrir audio, na margem superior da janela principal
         iconAud = PhotoImage(file='img/audio.png')
         self.audio = Button(self.janela, image=iconAud, bg='white', activebackground='white', border=0, command = lambda: self.som())
-        self.audio.place(x=450, y=10)    
+        self.audio.place(x=460, y=5)    
                 
         #Função que invocará procedimentos para fazer o botão principal piscar
         self.efeito_botao_crescer()
@@ -107,7 +107,7 @@ class jogo:
             iconAud2 = PhotoImage(file='img/mute.png')
             
             self.mudo = Button(self.janela, image=iconAud2, border=0, bg='white', activebackground='white', command = self.som)
-            self.mudo.place(x=450, y=10)
+            self.mudo.place(x=460, y=5)
             
             pygame.mixer.music.set_volume(0.0)
             
@@ -121,7 +121,7 @@ class jogo:
             iconAud = PhotoImage(file='img/audio.png')
             
             self.audio = Button(self.janela, image=iconAud, bg='white', activebackground='white', border=0,    command = self.som)
-            self.audio.place(x=450, y=10)
+            self.audio.place(x=460, y=5)
             
             pygame.mixer.music.set_volume(1.0)
             
@@ -159,7 +159,11 @@ class jogo:
         
     #--- Função responsável por identicar qual o tom escolhido e interpretár os exercícios propostos ---
     def janela_2_jogo(self, grau):
+        pygame.mixer.music.stop()
 
+        pygame.mixer.music.load('song/jazz_piano.mp3')
+        pygame.mixer.music.play(-1)
+        
         #Destruindo os labels e botões da janela principal, fazendo um reaproveitamento da mesma janela
         self.titulo1.destroy()
         self.titulo2.destroy()
@@ -219,6 +223,7 @@ class jogo:
     
     #Função responsável por quando apertar o botão de voltar retornar para a tela inicial
     def voltar(self):
+        
         self.viola.destroy()
         self.botVoltar.destroy()
         self.txt1.destroy()
@@ -232,9 +237,12 @@ class jogo:
         self.bt5.destroy()
         self.bt6.destroy()
         self.bt7.destroy()
+        
+        pygame.mixer.music.load('song/tema_principal.mp3')
+        pygame.mixer.music.play(-1)
+        
         self.logoimage2.destroy()        
         self.componentes_janela_incial()
-
 
 
 

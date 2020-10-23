@@ -240,10 +240,16 @@ class jogo:
         self.bt6.destroy()
         self.bt7.destroy()
         
+        self.contador = 0
+        
+        if self.rodada == True:
+            self.botaoReiniciar.destroy()
+            self.logoimage3.destroy()
+        
         pygame.mixer.music.load('song/tema_principal.mp3')
         pygame.mixer.music.play(-1)
         
-        self.logoimage2.destroy()        
+        self.logoimage2.destroy()
         self.componentes_janela_incial()
 
 
@@ -252,7 +258,9 @@ class jogo:
 
     #Função responsável por configurar layout de vitória  caso o jogador tenha acertado as alternativas
     def partida_vencida(self):
-            
+        
+        self.rodada = True
+        
         self.logoimage2.destroy()
         logoImg3 = PhotoImage(file="img/guitarMan3.png")
         self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')

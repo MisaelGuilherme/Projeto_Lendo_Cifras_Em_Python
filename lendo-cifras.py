@@ -19,7 +19,7 @@ class jogo:
     def __init__(self):
         
         #Variáveis responsáveis por alguns controles do programa
-        self.telaInicial = False
+        self.rodada = False
         self.confirmarPausa = False
         self.listaBotao = []
         self.contBrilho = 0
@@ -159,6 +159,7 @@ class jogo:
         
     #--- Função responsável por identicar qual o tom escolhido e interpretár os exercícios propostos ---
     def janela_2_jogo(self, grau):
+        
         pygame.mixer.music.stop()
 
         pygame.mixer.music.load('song/jazz_piano.mp3')
@@ -219,6 +220,7 @@ class jogo:
 
         self.janela.mainloop()
 
+
     
     
     #Função responsável por quando apertar o botão de voltar retornar para a tela inicial
@@ -247,9 +249,15 @@ class jogo:
 
 
 
-    #--- Função responsável por reiniciar todo processo caso o jogador queira jogar novamente ---
-    def reiniciar(self):
-        
+
+    #Função responsável por configurar layout de vitória  caso o jogador tenha acertado as alternativas
+    def partida_vencida(self):
+            
+        self.logoimage2.destroy()
+        logoImg3 = PhotoImage(file="img/guitarMan3.png")
+        self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
+        self.logoimage3.place(x=300, y=300)
+
         #Função que irá reinicializar os labels e botões zerando tudo
         def restart():
             
@@ -279,9 +287,6 @@ class jogo:
             
             self.janela.mainloop()
         
-        
-        
-        
         #Função que fará o botão de jogar novamente piscar
         def brilhar():
             
@@ -299,23 +304,13 @@ class jogo:
         
         #Chamando a função responsável por fazer o botão reiniciar piscar
         brilhar()
-
-
-
-    #Função responsável por configurar layout de vitória  caso o jogador tenha acertado as alternativas
-    def partida_vencida(self):
-            
-        self.logoimage2.destroy()
-        logoImg3 = PhotoImage(file="img/guitarMan3.png")
-        self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-        self.logoimage3.place(x=300, y=300)
-
-        self.reiniciar()
+        
         pygame.mixer.music.stop()
         pygame.mixer.music.load('song/aplausos.mp3')
         pygame.mixer.music.play()
         
         self.janela.mainloop()
+                
         
         
         

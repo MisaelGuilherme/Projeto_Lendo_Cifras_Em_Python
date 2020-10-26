@@ -66,7 +66,7 @@ class jogo:
     
     #--- Função responsável por aumentar o tom no Menu Inicial ---
     def mudar_tom_mais(self):
-        lista = ['C','D','E','F','G','A','Bº']
+        lista = ['C','D','E','F','G','A','B']
         
         if self.contTom == 6: 
             self.contTom = 0
@@ -77,15 +77,15 @@ class jogo:
             self.titulo3['text'] = lista[self.contTom]
         else:
             self.contTom += 1
-            print(self.contTom)
             self.titulo3['text'] = lista[self.contTom]
+        print(self.contTom)
     
     
     
     
     #--- Função responsável por diminuir o tom no Menu Inicial ---
     def mudar_tom_menos(self):
-        lista = ['C','D','E','F','G','A','Bº']
+        lista = ['C','D','E','F','G','A','B']
         
         if self.contTom == -6:
             self.contTom = 0
@@ -232,6 +232,67 @@ class jogo:
                 if n1 != n2 and n2 != n3 and n1 != n3:
                     break                        
         
+        elif tom == 'E':
+            
+            self.lista = ['E','F#m','G#m','A','B','C#m','D#º']
+            notas = []
+            while True:
+                n1 = randint(0,6)
+                n2 = randint(0,6)
+                n3 = randint(0,6)
+                if n1 != n2 and n2 != n3 and n1 != n3:
+                    break
+                       
+        elif tom == 'F':
+            
+            self.lista = ['F','Gm','Am','Bb','C','Dm','Eº']
+            notas = []
+            while True:
+                n1 = randint(0,6)
+                n2 = randint(0,6)
+                n3 = randint(0,6)
+                if n1 != n2 and n2 != n3 and n1 != n3:
+                    break
+                
+        elif tom == 'G':
+            
+            self.lista = ['G','Am','Bm','C','D','Em','F#º']
+            notas = []
+            while True:
+                n1 = randint(0,6)
+                n2 = randint(0,6)
+                n3 = randint(0,6)
+                if n1 != n2 and n2 != n3 and n1 != n3:
+                    break
+                
+        elif tom == 'A':
+            
+            self.lista = ['A','Bm','C#m','D','E','F#m','G#º']
+            notas = []
+            while True:
+                n1 = randint(0,6)
+                n2 = randint(0,6)
+                n3 = randint(0,6)
+                if n1 != n2 and n2 != n3 and n1 != n3:
+                    break
+                
+        elif tom == 'B':
+            
+            self.lista = ['B','C#m','D#m','E','F#','G#m','A#º']
+            notas = []
+            while True:
+                n1 = randint(0,6)
+                n2 = randint(0,6)
+                n3 = randint(0,6)
+                if n1 != n2 and n2 != n3 and n1 != n3:
+                    break
+            self.lb1['width'] = 4
+            self.lb2['width'] = 4
+            self.lb3['width'] = 4
+            self.lb1.place(x=162,y=160)
+            self.lb2.place(x=225,y=160)
+            self.lb3.place(x=293,y=160)                        
+                                
         v1 = self.lista[n1]
         v2 = self.lista[n2]
         v3 = self.lista[n3]
@@ -281,14 +342,15 @@ class jogo:
         self.txt1 = Label(self.janela, text='Informe na Ordem o Grau das Notas', font=('arial',15,'bold'), bg='white', fg='orange')
         self.txt1.place(x=80,y=20)        
         
-        self.lb1 = Label(self.janela, text='', font=('hanging letters',25), fg='orange', bg='white', width=3)
-        self.lb2 = Label(self.janela, text='', font=('hanging letters',25), fg='orange',bg='white', width=3)
-        self.lb3 = Label(self.janela, text='', font=('hanging letters',25), fg='orange',bg='white', width=3)
-        self.lb1.place(x=170,y=160)
-        self.lb2.place(x=230,y=160)
+        self.lb1 = Label(self.janela, text='', border=1, font=('hanging letters',25), fg='orange', bg='white', width=4)
+        self.lb2 = Label(self.janela, text='', border=1, font=('hanging letters',25), fg='orange',bg='white', width=4)
+        self.lb3 = Label(self.janela, text='', border=1, font=('hanging letters',25), fg='orange',bg='white', width=5)
+        self.lb1.place(x=165,y=160)
+        self.lb2.place(x=225,y=160)
         self.lb3.place(x=290,y=160)          
         
         #Invocando função responsável por mostrar quais notas aleatoriamente irão aparecer
+        print(self.tomHarmonia)
         self.escolhendo_notas_formar(self.tomHarmonia)
 
         #Botões que referenciam cada grau das notas

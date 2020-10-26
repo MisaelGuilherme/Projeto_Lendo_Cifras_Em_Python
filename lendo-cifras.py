@@ -25,51 +25,42 @@ class jogo:
          
         #Iniciando mixer de trilha sonora principal do programa
         if efeito == 'musica_tema_inicial':
+            
             pygame.mixer.music.load('song/tema_principal.mp3')
             pygame.mixer.music.play(-1)
             pygame.event.wait()                
 
         elif efeito == 'musica_jazz_piano': 
+            
             pygame.mixer.music.load('song/jazz_piano.mp3')
             pygame.mixer.music.play(-1)
         
         elif efeito == 'aplausos':
+            
             self.aplausos = pygame.mixer.Sound('song/aplausos1.wav')
             self.aplausos.play()
         
         elif efeito == 'click':
+            
             self.click = pygame.mixer.Sound("song/click.wav")
             self.click.play()
+    
             
     
     
-    #--- Função Inicial, criando janela e configurando ---
-    def __init__(self):
+    #--- Função responsável por fazer o botão da janela principal piscar ---        
+    def efeito_botao_crescer(self):
         
-        #Variáveis responsáveis por alguns controles do programa
-        self.rodada = False
-        self.confirmarPausa = False
-        self.listaBotao = []
-        self.contBrilho = 0
-        self.contador = 0
-        self.contTom = 0
+        self.contBrilho += 1
+
+        if self.contBrilho % 2 == 0:
+            self.botao['fg'] = 'orange'
+
+        else:
+            self.botao['fg'] = 'white'
         
-        #self.sons_efeitos('musica_tema_inicial')
+        self.botao.after(500, self.efeito_botao_crescer)
         
-        #Iniciando janela principal
-        self.janela = Tk()
-        self.janela.geometry('500x500+350+100')
-        #self.janela.attributes("-alpha", 0.9)
-        self.janela.resizable(False, False)
-        #janela.minsize(400,400)
-        #janela.maxsize(600,600)
-        #janela.state('zoomed') ou iconic
-        self.janela.title('Lendo Cifra')
-        self.janela.iconbitmap("icons/violao.ico")
-        self.janela['bg'] = 'white'
-        self.componentes_janela_incial()
-        self.janela.mainloop()
-    
     
     
     
@@ -106,8 +97,35 @@ class jogo:
         else:
             self.contTom -= 1
             print(self.contTom)
-            self.titulo3['text'] = lista[self.contTom]
-            
+            self.titulo3['text'] = lista[self.contTom]    
+        
+        
+        
+        
+    #--- Função Inicial, criando janela e configurando ---
+    def __init__(self):
+        
+        #Variáveis responsáveis por alguns controles do programa
+        self.rodada = False
+        self.confirmarPausa = False
+        self.listaBotao = []
+        self.contBrilho = 0
+        self.contador = 0
+        self.contTom = 0
+        
+        #self.sons_efeitos('musica_tema_inicial')
+        
+        #Iniciando janela principal
+        self.janela = Tk()
+        self.janela.geometry('500x500+350+100')
+        self.janela.resizable(False, False)
+
+        self.janela.title('Lendo Cifra')
+        self.janela.iconbitmap("icons/violao.ico")
+        self.janela['bg'] = 'white'
+        self.componentes_janela_incial()
+        self.janela.mainloop()
+    
     
     
     
@@ -125,16 +143,16 @@ class jogo:
         self.titulo2 = Label(self.janela, text='De', font=('earwig factory',25), bg='white', fg='orange')
         self.titulo2.place(x=240,y=90)
         
-        setaEsquerd = Button(self.janela, text='v', border=0, bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 30), command = self.mudar_tom_menos)
-        setaEsquerd.place(x=170, y=130)
+        self.setaEsquerd = Button(self.janela, text='v', border=0, bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 30), command = self.mudar_tom_menos)
+        self.setaEsquerd.place(x=170, y=130)
         
-        setaDireit = Button(self.janela, text='u', border=0, height=-2105, bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 30), command = self.mudar_tom_mais)
-        setaDireit.place(x=270, y=130)
+        self.setaDireit = Button(self.janela, text='u', border=0, bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 30), command = self.mudar_tom_mais)
+        self.setaDireit.place(x=270, y=130)
         
         self.titulo3 = Label(self.janela, text='C', font=('hanging letters',45), bg='white', fg='orange')
         self.titulo3.place(x=240,y=130)   
 
-        self.botao = Button(self.janela, text='b', bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('font bottons music pro', 60), border=0, command = lambda: self.janela_2_jogo('C'))
+        self.botao = Button(self.janela, text='b', bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('font bottons music pro', 60), border=0, command = self.janela_2_jogo)
         self.botao.place(x=170,y=200)
 
         #Imagem de homem tocando guitarra de brinquedo
@@ -152,24 +170,9 @@ class jogo:
         
         self.janela.mainloop()
         
-        
-        
-    #--- Função responsável por fazer o botão da janela principal piscar ---        
-    def efeito_botao_crescer(self):
-        
-        self.contBrilho += 1
 
-        if self.contBrilho % 2 == 0:
-            self.botao['fg'] = 'orange'
-
-        else:
-            self.botao['fg'] = 'white'
+    
         
-        self.botao.after(500, self.efeito_botao_crescer)
-    
-    
-    
-    
     #--- Função responsável por tirar a música de fundo ao clicar no botão de volume da janela principal ---
     def som(self):
         
@@ -217,23 +220,38 @@ class jogo:
                 n3 = randint(0,6)
                 if n1 != n2 and n2 != n3 and n1 != n3:
                     break
-
-            v1 = self.lista[n1]
-            v2 = self.lista[n2]
-            v3 = self.lista[n3]
-
-            self.dd = [False,False,False]
-            self.listaEmba = [v1,v2,v3]
+        
+        elif tom == 'D':
             
-            self.lb1['text'] = v1
-            self.lb2['text'] = v2
-            self.lb3['text'] = v3
+            self.lista = ['D','Em','F#m','G','A','Bm','C#º']
+            notas = []
+            while True:
+                n1 = randint(0,6)
+                n2 = randint(0,6)
+                n3 = randint(0,6)
+                if n1 != n2 and n2 != n3 and n1 != n3:
+                    break                        
+        
+        v1 = self.lista[n1]
+        v2 = self.lista[n2]
+        v3 = self.lista[n3]
+
+        self.dd = [False,False,False]
+        self.listaEmba = [v1,v2,v3]
+        
+        self.lb1['text'] = v1
+        self.lb2['text'] = v2
+        self.lb3['text'] = v3
 
 
 
         
     #--- Função responsável por identicar qual o tom escolhido e interpretár os exercícios propostos ---
-    def janela_2_jogo(self, grau):
+    def janela_2_jogo(self):
+        
+        self.contTom = 0
+        
+        self.tomHarmonia = self.titulo3['text']
         
         self.sons_efeitos('click')
         
@@ -246,6 +264,8 @@ class jogo:
         self.botao.destroy()
         self.logoimage1.destroy()
         self.logoimage2.destroy()
+        self.setaEsquerd.destroy()
+        self.setaDireit.destroy()
         
         #Imagem de violão na honrizontal na janela principal
         iconVio = PhotoImage(file='img/viola00.png')
@@ -264,12 +284,12 @@ class jogo:
         self.lb1 = Label(self.janela, text='', font=('hanging letters',25), fg='orange', bg='white', width=3)
         self.lb2 = Label(self.janela, text='', font=('hanging letters',25), fg='orange',bg='white', width=3)
         self.lb3 = Label(self.janela, text='', font=('hanging letters',25), fg='orange',bg='white', width=3)
-        self.lb1.place(x=180,y=160)
+        self.lb1.place(x=170,y=160)
         self.lb2.place(x=230,y=160)
-        self.lb3.place(x=280,y=160)          
+        self.lb3.place(x=290,y=160)          
         
         #Invocando função responsável por mostrar quais notas aleatoriamente irão aparecer
-        self.escolhendo_notas_formar('C')
+        self.escolhendo_notas_formar(self.tomHarmonia)
 
         #Botões que referenciam cada grau das notas
         self.bt1 = Button(self.janela, text='1º', command = lambda: self.harmonia(1), bg='orange', fg='white', width='5', relief='groove')
@@ -295,135 +315,9 @@ class jogo:
         self.janela.mainloop()
 
 
-    
-    
-    #--- Função responsável por quando apertar o botão de voltar retornar para a tela inicial ---
-    def voltar(self):
-        
-        self.sons_efeitos('click')
-        
-        self.viola.destroy()
-        self.botVoltar.destroy()
-        self.txt1.destroy()
-        self.lb1.destroy()
-        self.lb2.destroy()
-        self.lb3.destroy()
-        self.bt1.destroy()
-        self.bt2.destroy()
-        self.bt3.destroy()
-        self.bt4.destroy()
-        self.bt5.destroy()
-        self.bt6.destroy()
-        self.bt7.destroy()
-        
-        self.contador = 0
-        
-        if self.rodada == True:
-            self.botaoReiniciar.destroy()
-            self.logoimage3.destroy()
-        
-        pygame.mixer.music.load('song/tema_principal.mp3')
-        pygame.mixer.music.play(-1)
-        
-        self.logoimage2.destroy()
-        self.componentes_janela_incial()
 
 
 
-
-
-    #--- Função responsável por configurar layout de vitória  caso o jogador tenha acertado as alternativas ---
-    def partida_vencida(self):
-        
-        self.rodada = True
-        
-        self.logoimage2.destroy()
-        logoImg3 = PhotoImage(file="img/guitarMan3.png")
-        self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
-        self.logoimage3.place(x=300, y=300)
-
-        #Função que irá reinicializar os labels e botões zerando tudo
-        def restart():
-            
-            self.contador = 0
-            
-            self.bt1['bg'] = 'orange'
-            self.bt2['bg'] = 'orange'
-            self.bt3['bg'] = 'orange'
-            self.bt4['bg'] = 'orange'
-            self.bt5['bg'] = 'orange'
-            self.bt6['bg'] = 'orange'
-            self.bt7['bg'] = 'orange'
-            
-            self.botaoReiniciar.destroy()
-            
-            self.logoimage3.destroy()
-            
-            logoImg1 = PhotoImage(file="img/guitarMan1.png")
-            self.logoimage2 = Label(self.janela, image=logoImg1, bg='white')
-            self.logoimage2.place(x=280, y=300)     
-            
-            pygame.mixer.music.stop()
-            pygame.mixer.music.load('song/jazz_piano.mp3')       
-            pygame.mixer.music.play()
-            
-            self.escolhendo_notas_formar('C')            
-            
-            self.janela.mainloop()
-        
-        #Função que fará o botão de jogar novamente piscar
-        def brilhar():
-            
-            self.contBrilho += 1
-            
-            if self.contBrilho % 2 == 0:
-                self.botaoReiniciar['fg'] = 'orange'
-            else:
-                self.botaoReiniciar['fg'] = 'white'
-            self.botaoReiniciar.after(300, brilhar)
-
-        #Botão de restart caso o jogador queira jogar novamente
-        self.botaoReiniciar = Button(self.janela, text='r', border=0, bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 70), command=restart)
-        self.botaoReiniciar.place(x=80, y=330)
-        
-        #Chamando a função responsável por fazer o botão reiniciar piscar
-        brilhar()
-        
-        self.sons_efeitos('aplausos')
-        
-        self.janela.mainloop()
-                
-        
-        
-        
-    #--- Função responsável por verificar os botões caso e configurando a cor caso haja acerto ---
-    def verificar_acerto(self, L1, botaoNum):
-        
-        #Verificando acerto caso o botão seja apertado            
-        if  self.dd[0] == False and self.lista[L1] == self.listaEmba[0]:
-            botaoNum['bg'] = 'green'
-            self.dd[0] = True
-            self.contador += 1
-        
-        elif self.dd[0] == True and self.dd[1] == False and self.lista[L1] == self.listaEmba[1]:
-            botaoNum['bg'] = 'green'
-            self.dd[1] = True
-            self.contador += 1
-        
-        elif self.dd[0] == True and self.dd[1] == True and self.dd[2] == False and self.lista[L1] == self.listaEmba[2]:
-            botaoNum['bg'] = 'green'
-            self.dd[2] = True
-            self.contador += 1
-        else:
-            botaoNum['bg'] = 'red' 
-            
-        if self.contador >= 3:
-
-            self.partida_vencida()        
-    
-    
-    
-    
     #--- Função de verificação onde ao clicar no botão irá verificar se foi atingido a meta, e o jogador venceu---
     def harmonia(self, grau):
         
@@ -462,7 +356,130 @@ class jogo:
             
             self.verificar_acerto(6, self.bt7)
 
-    #lb1 = Label(janela, text='Digite o grauº da nota', font=('arial',10,'bold'))
-    #lb1.place(x=10,y=100)
+
+
+
+    #--- Função responsável por verificar os botões caso e configurando a cor caso haja acerto ---
+    def verificar_acerto(self, L1, botaoNum):
+        
+        #Verificando acerto caso o botão seja apertado            
+        if  self.dd[0] == False and self.lista[L1] == self.listaEmba[0]:
+            botaoNum['bg'] = 'green'
+            self.dd[0] = True
+            self.contador += 1
+        
+        elif self.dd[0] == True and self.dd[1] == False and self.lista[L1] == self.listaEmba[1]:
+            botaoNum['bg'] = 'green'
+            self.dd[1] = True
+            self.contador += 1
+        
+        elif self.dd[0] == True and self.dd[1] == True and self.dd[2] == False and self.lista[L1] == self.listaEmba[2]:
+            botaoNum['bg'] = 'green'
+            self.dd[2] = True
+            self.contador += 1
+        else:
+            botaoNum['bg'] = 'red' 
+            
+        if self.contador >= 3:
+
+            self.partida_vencida()
+    
+    
+    
+    
+    #--- Função responsável por configurar layout de vitória  caso o jogador tenha acertado as alternativas ---
+    def partida_vencida(self):
+        
+        self.rodada = True
+        
+        self.logoimage2.destroy()
+        logoImg3 = PhotoImage(file="img/guitarMan3.png")
+        self.logoimage3 = Label(self.janela, image=logoImg3, bg='white')
+        self.logoimage3.place(x=300, y=300)
+
+        #Função que irá reinicializar os labels e botões zerando tudo
+        def restart():
+            
+            self.contador = 0
+            
+            self.bt1['bg'] = 'orange'
+            self.bt2['bg'] = 'orange'
+            self.bt3['bg'] = 'orange'
+            self.bt4['bg'] = 'orange'
+            self.bt5['bg'] = 'orange'
+            self.bt6['bg'] = 'orange'
+            self.bt7['bg'] = 'orange'
+            
+            self.botaoReiniciar.destroy()
+            
+            self.logoimage3.destroy()
+            
+            logoImg1 = PhotoImage(file="img/guitarMan1.png")
+            self.logoimage2 = Label(self.janela, image=logoImg1, bg='white')
+            self.logoimage2.place(x=280, y=300)     
+            
+            pygame.mixer.music.stop()
+            pygame.mixer.music.load('song/jazz_piano.mp3')       
+            pygame.mixer.music.play()
+            
+            self.escolhendo_notas_formar(self.tomHarmonia)
+            
+            self.janela.mainloop()
+        
+        #Função que fará o botão de jogar novamente piscar
+        def brilhar():
+            
+            self.contBrilho += 1
+            
+            if self.contBrilho % 2 == 0:
+                self.botaoReiniciar['fg'] = 'orange'
+            else:
+                self.botaoReiniciar['fg'] = 'white'
+            self.botaoReiniciar.after(300, brilhar)
+
+        #Botão de restart caso o jogador queira jogar novamente
+        self.botaoReiniciar = Button(self.janela, text='r', border=0, bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 70), command=restart)
+        self.botaoReiniciar.place(x=80, y=330)
+        
+        #Chamando a função responsável por fazer o botão reiniciar piscar
+        brilhar()
+        
+        self.sons_efeitos('aplausos')
+        
+        self.janela.mainloop()    
+    
+    
+    
+    
+    #--- Função responsável por quando apertar o botão de voltar retornar para a tela inicial ---
+    def voltar(self):
+        
+        self.sons_efeitos('click')
+        
+        self.viola.destroy()
+        self.botVoltar.destroy()
+        self.txt1.destroy()
+        self.lb1.destroy()
+        self.lb2.destroy()
+        self.lb3.destroy()
+        self.bt1.destroy()
+        self.bt2.destroy()
+        self.bt3.destroy()
+        self.bt4.destroy()
+        self.bt5.destroy()
+        self.bt6.destroy()
+        self.bt7.destroy()
+        
+        self.contador = 0
+        
+        if self.rodada == True:
+            self.botaoReiniciar.destroy()
+            self.logoimage3.destroy()
+        
+        pygame.mixer.music.load('song/tema_principal.mp3')
+        pygame.mixer.music.play(-1)
+        
+        self.logoimage2.destroy()
+        self.componentes_janela_incial()        
 
 instancia = jogo()

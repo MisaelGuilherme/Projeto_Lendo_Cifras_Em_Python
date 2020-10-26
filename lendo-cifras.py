@@ -68,7 +68,20 @@ class jogo:
         self.componentes_janela_incial()
         self.janela.mainloop()
     
-
+    def mudar_tom_mais(self):
+        lista = ['C','D','E','F','G','A','Bº']
+        
+        if self.contTom == 6: 
+            self.contTom = 0
+            self.titulo3['text'] = lista[self.contTom]        
+        
+        elif self.contTom == 0:
+            self.contTom += 1
+            self.titulo3['text'] = lista[self.contTom]
+        else:
+            self.contTom += 1
+            print(self.contTom)
+            self.titulo3['text'] = lista[self.contTom]
             
     
     def componentes_janela_incial(self):        

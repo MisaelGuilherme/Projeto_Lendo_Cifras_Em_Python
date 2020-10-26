@@ -13,10 +13,12 @@ from tkinter import *
 from random import *
 import pygame
 
-#Classe contendo toda a aplicação
+
+#-------- Classe contendo toda a aplicação --------
 class jogo:
+   
     
-    #sons, trilhas sonoras e efeitos
+    #--- sons, trilhas sonoras e efeitos ---
     def sons_efeitos(self, efeito):
          
         pygame.init()
@@ -41,7 +43,7 @@ class jogo:
             
     
     
-    
+    #--- Função Inicial, criando janela e configurando ---
     def __init__(self):
         
         #Variáveis responsáveis por alguns controles do programa
@@ -68,6 +70,10 @@ class jogo:
         self.componentes_janela_incial()
         self.janela.mainloop()
     
+    
+    
+    
+    #--- Função responsável por aumentar o tom no Menu Inicial ---
     def mudar_tom_mais(self):
         lista = ['C','D','E','F','G','A','Bº']
         
@@ -82,7 +88,11 @@ class jogo:
             self.contTom += 1
             print(self.contTom)
             self.titulo3['text'] = lista[self.contTom]
-            
+    
+    
+    
+    
+    #--- Função responsável por diminuir o tom no Menu Inicial ---
     def mudar_tom_menos(self):
         lista = ['C','D','E','F','G','A','Bº']
         
@@ -99,6 +109,9 @@ class jogo:
             self.titulo3['text'] = lista[self.contTom]
             
     
+    
+    
+    #--- Função responsável por adcionar os labels e botões do Menu Principal ---
     def componentes_janela_incial(self):        
     
         #Imagem de violão na tela principal
@@ -284,7 +297,7 @@ class jogo:
 
     
     
-    #Função responsável por quando apertar o botão de voltar retornar para a tela inicial
+    #--- Função responsável por quando apertar o botão de voltar retornar para a tela inicial ---
     def voltar(self):
         
         self.sons_efeitos('click')
@@ -319,7 +332,7 @@ class jogo:
 
 
 
-    #Função responsável por configurar layout de vitória  caso o jogador tenha acertado as alternativas
+    #--- Função responsável por configurar layout de vitória  caso o jogador tenha acertado as alternativas ---
     def partida_vencida(self):
         
         self.rodada = True
@@ -383,7 +396,7 @@ class jogo:
         
         
         
-    #Função responsável por verificar os botões caso e configurando a cor caso haja acerto
+    #--- Função responsável por verificar os botões caso e configurando a cor caso haja acerto ---
     def verificar_acerto(self, L1, botaoNum):
         
         #Verificando acerto caso o botão seja apertado            

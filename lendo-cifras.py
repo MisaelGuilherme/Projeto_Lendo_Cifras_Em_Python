@@ -19,9 +19,10 @@ class jogo:
     #sons, trilhas sonoras e efeitos
     def sons_efeitos(self, efeito):
          
+        pygame.init()
+         
         #Iniciando mixer de trilha sonora principal do programa
         if efeito == 'musica_tema_inicial':
-            pygame.init()
             pygame.mixer.music.load('song/tema_principal.mp3')
             pygame.mixer.music.play(-1)
             pygame.event.wait()                
@@ -49,8 +50,9 @@ class jogo:
         self.listaBotao = []
         self.contBrilho = 0
         self.contador = 0
+        self.contTom = 0
         
-        self.sons_efeitos('musica_tema_inicial')
+        #self.sons_efeitos('musica_tema_inicial')
         
         #Iniciando janela principal
         self.janela = Tk()
@@ -66,6 +68,9 @@ class jogo:
         self.componentes_janela_incial()
         self.janela.mainloop()
     
+
+            
+    
     def componentes_janela_incial(self):        
     
         #Imagem de violão na tela principal
@@ -79,11 +84,17 @@ class jogo:
         self.titulo2 = Label(self.janela, text='De', font=('earwig factory',25), bg='white', fg='orange')
         self.titulo2.place(x=240,y=90)
         
+        setaEsquerd = Button(self.janela, text='v', border=0, bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 30), command = self.mudar_tom_menos)
+        setaEsquerd.place(x=170, y=130)
+        
+        setaDireit = Button(self.janela, text='u', border=0, height=-2105, bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 30), command = self.mudar_tom_mais)
+        setaDireit.place(x=270, y=130)
+        
         self.titulo3 = Label(self.janela, text='C', font=('hanging letters',45), bg='white', fg='orange')
         self.titulo3.place(x=240,y=130)   
 
         self.botao = Button(self.janela, text='b', bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('font bottons music pro', 60), border=0, command = lambda: self.janela_2_jogo('C'))
-        self.botao.place(x=170,y=200)    
+        self.botao.place(x=170,y=200)
 
         #Imagem de homem tocando guitarra de brinquedo
         logoImg2 = PhotoImage(file="img/guitarMan2.png")
@@ -331,8 +342,8 @@ class jogo:
             self.botaoReiniciar.after(300, brilhar)
 
         #Botão de restart caso o jogador queira jogar novamente
-        self.botaoReiniciar = Button(self.janela, text='Vamos de Novo?', bg='white', activebackground='white', fg='orange', activeforeground='orange', border=0, font=('arial', 18, 'bold'), command=restart)
-        self.botaoReiniciar.place(x=50, y=350)
+        self.botaoReiniciar = Button(self.janela, text='r', border=0, bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 70), command=restart)
+        self.botaoReiniciar.place(x=80, y=330)
         
         #Chamando a função responsável por fazer o botão reiniciar piscar
         brilhar()

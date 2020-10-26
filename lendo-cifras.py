@@ -16,6 +16,31 @@ import pygame
 #Classe contendo toda a aplicação
 class jogo:
     
+    #sons, trilhas sonoras e efeitos
+    def sons_efeitos(self, efeito):
+         
+        #Iniciando mixer de trilha sonora principal do programa
+        if efeito == 'musica_tema_inicial':
+            pygame.init()
+            pygame.mixer.music.load('song/tema_principal.mp3')
+            pygame.mixer.music.play(-1)
+            pygame.event.wait()                
+
+        elif efeito == 'musica_jazz_piano': 
+            pygame.mixer.music.load('song/jazz_piano.mp3')
+            pygame.mixer.music.play(-1)
+        
+        elif efeito == 'aplausos':
+            self.aplausos = pygame.mixer.Sound('song/aplausos1.wav')
+            self.aplausos.play()
+        
+        elif efeito == 'click':
+            self.click = pygame.mixer.Sound("song/click.wav")
+            self.click.play()
+            
+    
+    
+    
     def __init__(self):
         
         #Variáveis responsáveis por alguns controles do programa
@@ -25,11 +50,7 @@ class jogo:
         self.contBrilho = 0
         self.contador = 0
         
-        #Iniciando mixer de trilha sonora principal do programa
-        pygame.init()
-        pygame.mixer.music.load('song/tema_principal.mp3')
-        pygame.mixer.music.play(-1)
-        pygame.event.wait()        
+        self.sons_efeitos('musica_tema_inicial')
         
         #Iniciando janela principal
         self.janela = Tk()
@@ -100,6 +121,8 @@ class jogo:
     #--- Função responsável por tirar a música de fundo ao clicar no botão de volume da janela principal ---
     def som(self):
         
+        self.sons_efeitos('click')
+        
         #Se a função for invocada destruirá o ícone atual e criará o ícone de "mudo"
         if pygame.mixer.music.get_busy() and self.confirmarPausa == False:
             self.audio.destroy()
@@ -160,10 +183,9 @@ class jogo:
     #--- Função responsável por identicar qual o tom escolhido e interpretár os exercícios propostos ---
     def janela_2_jogo(self, grau):
         
-        pygame.mixer.music.stop()
-
-        pygame.mixer.music.load('song/jazz_piano.mp3')
-        pygame.mixer.music.play(-1)
+        self.sons_efeitos('click')
+        
+        self.sons_efeitos('musica_jazz_piano')
         
         #Destruindo os labels e botões da janela principal, fazendo um reaproveitamento da mesma janela
         self.titulo1.destroy()
@@ -225,6 +247,8 @@ class jogo:
     
     #Função responsável por quando apertar o botão de voltar retornar para a tela inicial
     def voltar(self):
+        
+        self.sons_efeitos('click')
         
         self.viola.destroy()
         self.botVoltar.destroy()
@@ -313,9 +337,7 @@ class jogo:
         #Chamando a função responsável por fazer o botão reiniciar piscar
         brilhar()
         
-        pygame.mixer.music.stop()
-        pygame.mixer.music.load('song/aplausos.mp3')
-        pygame.mixer.music.play()
+        self.sons_efeitos('aplausos')
         
         self.janela.mainloop()
                 

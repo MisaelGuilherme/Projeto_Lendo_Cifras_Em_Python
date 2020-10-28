@@ -295,8 +295,6 @@ class jogo:
         self.listaEmba = [v1,v2,v3]
         
         self.lb1['text'] = v1+'     '+v2+'      '+v3
-        #self.lb2['text'] = v2
-        #self.lb3['text'] = v3
 
 
 
@@ -336,12 +334,8 @@ class jogo:
         self.txt1 = Label(self.janela, text='Informe na Ordem o Grau das Notas', font=('arial',15,'bold'), bg='white', fg='orange')
         self.txt1.place(x=80,y=20)        
         
-        self.lb1 = Label(self.janela, text='', bd=1, relief='solid', font=('arial',23), fg='orange', bg='pink')
-        #self.lb2 = Label(self.janela, text='', bd=1, relief='solid', font=('arial',23), fg='orange',bg='pink')
-        #self.lb3 = Label(self.janela, text='', bd=1, relief='solid', font=('arial',23), fg='orange',bg='pink')
+        self.lb1 = Label(self.janela, text='', bd=0, relief='solid', font=('hanging letters',23), fg='orange', bg='white')
         self.lb1.place(x=160,y=160)
-        #self.lb2.place(x=223,y=160)
-        #self.lb3.place(x=290,y=160)          
         
         #Invocando função responsável por mostrar quais notas aleatoriamente irão aparecer
         print(self.tomHarmonia)
@@ -516,8 +510,6 @@ class jogo:
         self.botVoltar.destroy()
         self.txt1.destroy()
         self.lb1.destroy()
-        self.lb2.destroy()
-        self.lb3.destroy()
         self.bt1.destroy()
         self.bt2.destroy()
         self.bt3.destroy()

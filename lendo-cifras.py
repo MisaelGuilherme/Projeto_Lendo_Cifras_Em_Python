@@ -77,9 +77,7 @@ class jogo:
             self.titulo3['text'] = lista[self.contTom]
         else:
             self.contTom += 1
-            self.titulo3['text'] = lista[self.contTom]
-        print(self.contTom)
-    
+            self.titulo3['text'] = lista[self.contTom]    
     
     
     
@@ -96,7 +94,6 @@ class jogo:
             self.titulo3['text'] = lista[self.contTom]
         else:
             self.contTom -= 1
-            print(self.contTom)
             self.titulo3['text'] = lista[self.contTom]    
         
         
@@ -338,7 +335,6 @@ class jogo:
         self.lb1.place(x=160,y=160)
         
         #Invocando função responsável por mostrar quais notas aleatoriamente irão aparecer
-        print(self.tomHarmonia)
         self.escolhendo_notas_formar(self.tomHarmonia)
 
         #Botões que referenciam cada grau das notas

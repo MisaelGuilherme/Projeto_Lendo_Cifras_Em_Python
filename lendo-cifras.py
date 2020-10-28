@@ -342,9 +342,9 @@ class jogo:
         self.txt1 = Label(self.janela, text='Informe na Ordem o Grau das Notas', font=('arial',15,'bold'), bg='white', fg='orange')
         self.txt1.place(x=80,y=20)        
         
-        self.lb1 = Label(self.janela, text='', border=1, font=('hanging letters',25), fg='orange', bg='white', width=4)
-        self.lb2 = Label(self.janela, text='', border=1, font=('hanging letters',25), fg='orange',bg='white', width=4)
-        self.lb3 = Label(self.janela, text='', border=1, font=('hanging letters',25), fg='orange',bg='white', width=5)
+        self.lb1 = Label(self.janela, text='', border=1, font=('arial',25), fg='orange', bg='pink', width=3)
+        self.lb2 = Label(self.janela, text='', border=1, font=('arial',25), fg='orange',bg='pink', width=3)
+        self.lb3 = Label(self.janela, text='', border=1, font=('arial',25), fg='orange',bg='pink', width=3)
         self.lb1.place(x=165,y=160)
         self.lb2.place(x=225,y=160)
         self.lb3.place(x=290,y=160)          

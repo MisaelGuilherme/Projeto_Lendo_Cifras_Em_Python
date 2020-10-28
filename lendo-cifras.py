@@ -140,17 +140,17 @@ class jogo:
         self.titulo2 = Label(self.janela, text='De', font=('earwig factory',25), bg='white', fg='orange')
         self.titulo2.place(x=240,y=90)
         
-        self.setaEsquerd = Button(self.janela, text='v', border=0, bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 30), command = self.mudar_tom_menos)
+        self.setaEsquerd = Button(self.janela, text='v', border=0, bg='white', activebackground='white', fg='black', activeforeground='black', font=('kg arrows', 30), command = self.mudar_tom_menos)
         self.setaEsquerd.place(x=170, y=130)
         
-        self.setaDireit = Button(self.janela, text='u', border=0, bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 30), command = self.mudar_tom_mais)
+        self.setaDireit = Button(self.janela, text='u', border=0, bg='white', activebackground='white', fg='black', activeforeground='black', font=('kg arrows', 30), command = self.mudar_tom_mais)
         self.setaDireit.place(x=270, y=130)
         
         self.titulo3 = Label(self.janela, text='C', font=('hanging letters',45), bg='white', fg='orange')
         self.titulo3.place(x=240,y=130)   
 
-        self.botao = Button(self.janela, text='b', bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('font bottons music pro', 60), border=0, command = self.janela_2_jogo)
-        self.botao.place(x=170,y=200)
+        self.botao = Button(self.janela, text='y', bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 60), border=0, command = self.janela_2_jogo)
+        self.botao.place(x=180,y=200)
 
         #Imagem de homem tocando guitarra de brinquedo
         logoImg2 = PhotoImage(file="img/guitarMan2.png")

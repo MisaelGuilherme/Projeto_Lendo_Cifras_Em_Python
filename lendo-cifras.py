@@ -285,13 +285,7 @@ class jogo:
                 n2 = randint(0,6)
                 n3 = randint(0,6)
                 if n1 != n2 and n2 != n3 and n1 != n3:
-                    break
-            self.lb1['width'] = 4
-            self.lb2['width'] = 4
-            self.lb3['width'] = 4
-            self.lb1.place(x=162,y=160)
-            self.lb2.place(x=225,y=160)
-            self.lb3.place(x=293,y=160)                        
+                    break                       
                                 
         v1 = self.lista[n1]
         v2 = self.lista[n2]

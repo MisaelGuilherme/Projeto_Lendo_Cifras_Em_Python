@@ -54,12 +54,12 @@ class jogo:
         self.contBrilho += 1
 
         if self.contBrilho % 2 == 0:
-            self.botao['fg'] = 'orange'
+            self.botaoPlay['fg'] = 'orange'
 
         else:
-            self.botao['fg'] = 'white'
+            self.botaoPlay['fg'] = 'white'
         
-        self.botao.after(500, self.efeito_botao_crescer)
+        self.botaoPlay.after(500, self.efeito_botao_crescer)
         
     
     
@@ -149,11 +149,11 @@ class jogo:
         self.titulo3 = Label(self.janela, text='C', font=('hanging letters',45), bg='white', fg='orange')
         self.titulo3.place(x=240,y=130)   
 
-        f = Frame(self.janela, width=90, height=80, bg='pink')
-        f.place(x=220, y=230)
+        self.frameBotao = Frame(self.janela, width=90, height=80, bg='white')
+        self.frameBotao.place(x=220, y=230)
         
-        self.botao = Button(f, text='y', bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 100), border=0, command = self.janela_2_jogo)
-        self.botao.place(x=-95,y=-75)
+        self.botaoPlay = Button(self.frameBotao, text='y', bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 100), border=0, command = self.janela_2_jogo)
+        self.botaoPlay.place(x=-95,y=-75)
 
         #Imagem de homem tocando guitarra de brinquedo
         logoImg2 = PhotoImage(file="img/guitarMan2.png")
@@ -314,7 +314,7 @@ class jogo:
         self.titulo1.destroy()
         self.titulo2.destroy()
         self.titulo3.destroy()
-        self.botao.destroy()
+        self.frameBotao.destroy()
         self.logoimage1.destroy()
         self.logoimage2.destroy()
         self.setaEsquerd.destroy()

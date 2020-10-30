@@ -149,8 +149,11 @@ class jogo:
         self.titulo3 = Label(self.janela, text='C', font=('hanging letters',45), bg='white', fg='orange')
         self.titulo3.place(x=240,y=130)   
 
-        self.botao = Button(self.janela, text='y', bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 60), border=0, command = self.janela_2_jogo)
-        self.botao.place(x=180,y=200)
+        f = Frame(self.janela, width=90, height=80, bg='pink')
+        f.place(x=220, y=230)
+        
+        self.botao = Button(f, text='y', bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 100), border=0, command = self.janela_2_jogo)
+        self.botao.place(x=-95,y=-75)
 
         #Imagem de homem tocando guitarra de brinquedo
         logoImg2 = PhotoImage(file="img/guitarMan2.png")

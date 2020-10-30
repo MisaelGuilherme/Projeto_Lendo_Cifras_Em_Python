@@ -549,7 +549,7 @@ class jogo:
         self.contador = 0
         
         if self.rodada == True:
-            self.frameBotaoRestartdestroy()
+            self.frameBotaoRestart.destroy()
             self.logoimage3.destroy()
         
         pygame.mixer.music.load('song/tema_principal.mp3')

@@ -484,13 +484,29 @@ class jogo:
         #Função que fará o botão de jogar novamente piscar
         def brilhar():
             
-            self.contBrilho += 1
-            
+            '''self.contBrilho += 1
             if self.contBrilho % 2 == 0:
                 self.botaoReiniciar['fg'] = 'orange'
             else:
                 self.botaoReiniciar['fg'] = 'white'
-            self.botaoReiniciar.after(300, brilhar)
+            self.botaoReiniciar.after(300, brilhar)'''
+            
+            self.blue += 1
+            
+            if self.blue >= 0:
+                
+                hex_cor = '#{:02x}{:02x}{:02x}'.format(self.red, self.green, self.blue)
+                
+                self.botaoReiniciar['fg'] = str(hex_cor)
+                if self.blue == 255:
+                    self.green = 149
+                    self.blue = 0
+                '''if self.green == 255:
+                    
+                    self.green = 149
+                    self.blue = 0'''
+            
+            self.botaoReiniciar.after(5, brilhar)
 
         #Botão de restart caso o jogador queira jogar novamente
         self.frameBotaoRestart = Frame(self.janela, width=110, height=110, bg='pink')
@@ -498,6 +514,11 @@ class jogo:
         
         self.botaoReiniciar = Button(self.frameBotaoRestart, text='Y', border=0, bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 130), command=restart)
         self.botaoReiniciar.place(x=-140, y=-90)
+        
+        self.red = 255
+        self.green = 149
+        self.blue = 0
+        
         
         #Chamando a função responsável por fazer o botão reiniciar piscar
         brilhar()

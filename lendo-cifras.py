@@ -140,11 +140,17 @@ class jogo:
         self.titulo2 = Label(self.janela, text='De', font=('earwig factory',27), bg='white', fg='orange')
         self.titulo2.place(x=240,y=85)
         
-        self.setaEsquerd = Button(self.janela, text='v', border=0, bg='white', activebackground='white', fg='black', activeforeground='black', font=('kg arrows', 30), command = self.mudar_tom_menos)
-        self.setaEsquerd.place(x=170, y=130)
+        self.frameSetaEsquerda = Frame(self.janela, width=23, height=23, bg='white')
+        self.frameSetaEsquerda.place(x=200, y=152)
+
+        self.setaEsquerd = Button(self.frameSetaEsquerda, text='v', border=0, bg='white', activebackground='white', fg='black', activeforeground='black', font=('kg arrows', 30), command = self.mudar_tom_menos)
+        self.setaEsquerd.place(x=-29, y=-22)
         
-        self.setaDireit = Button(self.janela, text='u', border=0, bg='white', activebackground='white', fg='black', activeforeground='black', font=('kg arrows', 30), command = self.mudar_tom_mais)
-        self.setaDireit.place(x=270, y=130)
+        self.frameSetaDireita = Frame(self.janela, width=23, height=23, bg='pink')
+        self.frameSetaDireita.place(x=300, y=152)
+        
+        self.setaDireit = Button(self.frameSetaDireita, text='u', border=0, bg='white', activebackground='white', fg='black', activeforeground='black', font=('kg arrows', 30), command = self.mudar_tom_mais)
+        self.setaDireit.place(x=-29, y=-22)
         
         self.titulo3 = Label(self.janela, text='C', font=('hanging letters',45), bg='white', fg='orange')
         self.titulo3.place(x=240,y=130)   
@@ -317,8 +323,8 @@ class jogo:
         self.frameBotao.destroy()
         self.logoimage1.destroy()
         self.logoimage2.destroy()
-        self.setaEsquerd.destroy()
-        self.setaDireit.destroy()
+        self.frameSetaEsquerda.destroy()
+        self.frameSetaDireita.destroy()
         
         #Imagem de violão na honrizontal na janela principal
         iconVio = PhotoImage(file='img/viola00.png')
@@ -459,7 +465,7 @@ class jogo:
             self.bt6['bg'] = 'orange'
             self.bt7['bg'] = 'orange'
             
-            self.botaoReiniciar.destroy()
+            self.frameBotaoRestart.destroy()
             
             self.logoimage3.destroy()
             
@@ -487,8 +493,11 @@ class jogo:
             self.botaoReiniciar.after(300, brilhar)
 
         #Botão de restart caso o jogador queira jogar novamente
-        self.botaoReiniciar = Button(self.janela, text='r', border=0, bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 70), command=restart)
-        self.botaoReiniciar.place(x=80, y=330)
+        self.frameBotaoRestart = Frame(self.janela, width=110, height=110, bg='pink')
+        self.frameBotaoRestart.place(x=130, y=340)
+        
+        self.botaoReiniciar = Button(self.frameBotaoRestart, text='Y', border=0, bg='white', activebackground='white', fg='orange', activeforeground='orange', font=('kg arrows', 130), command=restart)
+        self.botaoReiniciar.place(x=-140, y=-90)
         
         #Chamando a função responsável por fazer o botão reiniciar piscar
         brilhar()
@@ -520,7 +529,7 @@ class jogo:
         self.contador = 0
         
         if self.rodada == True:
-            self.botaoReiniciar.destroy()
+            self.frameBotaoRestartdestroy()
             self.logoimage3.destroy()
         
         pygame.mixer.music.load('song/tema_principal.mp3')

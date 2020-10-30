@@ -495,16 +495,15 @@ class jogo:
             
             if self.blue >= 0:
                 
+                self.green += 1
                 hex_cor = '#{:02x}{:02x}{:02x}'.format(self.red, self.green, self.blue)
                 
                 self.botaoReiniciar['fg'] = str(hex_cor)
-                if self.blue == 255:
-                    self.green = 149
-                    self.blue = 0
-                '''if self.green == 255:
+                
+                if self.green == 255:
                     
                     self.green = 149
-                    self.blue = 0'''
+                    self.blue = 0
             
             self.botaoReiniciar.after(5, brilhar)
 

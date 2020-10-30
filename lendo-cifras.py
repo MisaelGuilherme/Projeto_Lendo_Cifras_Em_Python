@@ -137,8 +137,8 @@ class jogo:
         self.titulo1 = Label(self.janela, text='Campo Harmonico', font=('earwig factory',30), bg='white', fg='orange')
         self.titulo1.place(x=80,y=20)
         
-        self.titulo2 = Label(self.janela, text='De', font=('earwig factory',25), bg='white', fg='orange')
-        self.titulo2.place(x=240,y=90)
+        self.titulo2 = Label(self.janela, text='De', font=('earwig factory',27), bg='white', fg='orange')
+        self.titulo2.place(x=240,y=85)
         
         self.setaEsquerd = Button(self.janela, text='v', border=0, bg='white', activebackground='white', fg='black', activeforeground='black', font=('kg arrows', 30), command = self.mudar_tom_menos)
         self.setaEsquerd.place(x=170, y=130)
@@ -341,19 +341,19 @@ class jogo:
         self.escolhendo_notas_formar(self.tomHarmonia)
 
         #Botões que referenciam cada grau das notas
-        self.bt1 = Button(self.janela, text='1º', command = lambda: self.harmonia(1), bg='orange', fg='white', width='5', relief='groove')
+        self.bt1 = Button(self.janela, text='1º', command = lambda: self.harmonia(1), bg='orange', fg='white', width='5', relief='groove', font=('arial', 8,'bold'))
         self.bt1.place(x=80,y=245)
-        self.bt2 = Button(self.janela, text='2º', command = lambda: self.harmonia(2), bg='orange', fg='white', width='5', relief='groove')
+        self.bt2 = Button(self.janela, text='2º', command = lambda: self.harmonia(2), bg='orange', fg='white', width='5', relief='groove', font=('arial', 8,'bold'))
         self.bt2.place(x=130,y=245)
-        self.bt3 = Button(self.janela, text='3º', command = lambda: self.harmonia(3), bg='orange', fg='white', width='5', relief='groove')
+        self.bt3 = Button(self.janela, text='3º', command = lambda: self.harmonia(3), bg='orange', fg='white', width='5', relief='groove', font=('arial', 8,'bold'))
         self.bt3.place(x=180,y=245)
-        self.bt4 = Button(self.janela, text='4º', command = lambda: self.harmonia(4), bg='orange', fg='white', width='5', relief='groove')
+        self.bt4 = Button(self.janela, text='4º', command = lambda: self.harmonia(4), bg='orange', fg='white', width='5', relief='groove', font=('arial', 8,'bold'))
         self.bt4.place(x=230,y=245)
-        self.bt5 = Button(self.janela, text='5º', command = lambda: self.harmonia(5), bg='orange', fg='white', width='5', relief='groove')
+        self.bt5 = Button(self.janela, text='5º', command = lambda: self.harmonia(5), bg='orange', fg='white', width='5', relief='groove', font=('arial', 8,'bold'))
         self.bt5.place(x=280,y=245)
-        self.bt6 = Button(self.janela, text='6º', command = lambda: self.harmonia(6), bg='orange', fg='white', width='5', relief='groove')
+        self.bt6 = Button(self.janela, text='6º', command = lambda: self.harmonia(6), bg='orange', fg='white', width='5', relief='groove', font=('arial', 8,'bold'))
         self.bt6.place(x=330,y=245)
-        self.bt7 = Button(self.janela, text='7º', command = lambda: self.harmonia(7), bg='orange', fg='white', width='5', relief='groove')
+        self.bt7 = Button(self.janela, text='7º', command = lambda: self.harmonia(7), bg='orange', fg='white', width='5', relief='groove', font=('arial', 8,'bold'))
         self.bt7.place(x=380,y=245)
 
         #Homem com guitarra de brinquedo enquanto o jogador tentar acertas os exercícios das notas
